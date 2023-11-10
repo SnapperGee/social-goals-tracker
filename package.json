@@ -1,0 +1,52 @@
+{
+  "name": "social-goal-tracker",
+  "version": "0.0.1",
+  "description": "Track your goals with friends.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "npm run build-sass && npm run build-ts",
+    "build-sass": "sass --load-path=./node_modules/bootstrap/scss ./src/main/scss:./src/main/css",
+    "build-ts": "tsc -p ./tsconfig.json",
+    "clean": "npm run clean-sass & npm run clean-ts",
+    "clean-sass": "rm -rf ./src/main/css",
+    "clean-ts": "rm -rf ./src/main/js",
+    "lint": "eslint --config .eslintrc.cjs --quiet --ext .mts ./src/**/*.mts",
+    "lint-strict": "eslint --config .eslintrc.cjs --ext .mts ./src/**/*.mts",
+    "prebuild-sass": "npm run clean-sass",
+    "prebuild-ts": "npm run clean-ts"
+  },
+  "keywords": [
+    "social",
+    "goal",
+    "tracker"
+  ],
+  "contributors": [
+    "Joseph Glenn",
+    "Gage Sandman",
+    "Danny Collan",
+    "Graham Auger"
+  ],
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bootstrap": "^5.3.2",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "express-session": "^1.17.3",
+    "mysql2": "^3.6.3",
+    "prisma": "^5.5.2",
+    "tslib": "^2.6.2"
+  },
+  "devDependencies": {
+    "@stylistic/eslint-plugin": "^1.0.1",
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^4.17.21",
+    "@types/express-session": "^1.17.10",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.53.0",
+    "sass": "^1.69.5",
+    "typescript": "^5.2.2"
+  }
+}

@@ -1,0 +1,23 @@
+{
+    "include": ["./src/main/ts/**/*.mts"],
+    "compilerOptions":
+    {
+      "allowSyntheticDefaultImports": true,
+      "declaration": false,
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "lib": ["es2022", "DOM"],
+      "module": "es2022",
+      "moduleResolution": "node",
+      "noEmitOnError": true,
+      "noImplicitAny": true,
+      "noImplicitOverride": true,
+      "noImplicitReturns": true,
+      "noImplicitThis": true,
+      "outDir": "./src/main/js",
+      "removeComments": true,
+      "sourceMap": true,
+      "strict": true,
+      "target": "es2022"
+    }
+  }
