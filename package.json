@@ -14,7 +14,8 @@
     "lint": "eslint --config .eslintrc.cjs --quiet --ext .mts ./src/**/*.mts",
     "lint-strict": "eslint --config .eslintrc.cjs --ext .mts ./src/**/*.mts",
     "prebuild-sass": "npm run clean-sass",
-    "prebuild-ts": "npm run clean-ts"
+    "prebuild-ts": "npm run clean-ts",
+    "start": "node ./src/main/js/server.mjs"
   },
   "keywords": [
     "social",
