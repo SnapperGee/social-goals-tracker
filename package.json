@@ -16,7 +16,6 @@
     "prebuild-sass": "npm run clean-sass",
     "prebuild-ts": "npm run clean-ts",
     "prisma-generate": "npx prisma generate",
-    "prisma-pull": "npx prisma db pull",
     "start": "node ./src/main/js/server.mjs"
   },
   "keywords": [
