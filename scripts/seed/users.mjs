@@ -1,6 +1,9 @@
+import { PrismaClient } from "../../src/main/prisma";
 import { randomUUID } from "node:crypto";
 
-export default Object.freeze([
+const prismaClient = new PrismaClient();
+
+export const users = Object.freeze([
     Object.freeze({
         id: randomUUID(),
         name: "Tim Henson",
@@ -42,3 +45,15 @@ export default Object.freeze([
         password: "invader"
     })
 ]);
+
+export const seedUsers = async () =>
+{
+    for (const user of users)
+    {
+        await prismaClient.user.create({
+            data: user
+        });
+    }
+};
+
+export default seedUsers;
