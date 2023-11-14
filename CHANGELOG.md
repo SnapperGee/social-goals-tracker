@@ -17,8 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - goal:
     - title required
     - optional description
-    - associated with a user
     - can be private or public
+    - associated with a user
   - milestone:
     - title required
     - optional description
