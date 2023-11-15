@@ -1,4 +1,4 @@
-import { PrismaClient } from "../../src/main/prisma";
+import { PrismaClient } from "../../src/main/prisma/index.js";
 import { randomUUID } from "node:crypto";
 
 const prismaClient = new PrismaClient();

@@ -1,5 +1,5 @@
 import { users } from "./users.mjs";
-import { PrismaClient } from "../../src/main/prisma";
+import { PrismaClient } from "../../src/main/prisma/index.js";
 
 const getRandomClient = (indexToExclude) => users.filter((_, index) => index !== indexToExclude)[Math.floor(Math.random() * users.length - 1)];
 
