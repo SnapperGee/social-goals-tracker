@@ -1,7 +1,5 @@
-import { PrismaClient } from "../../src/main/prisma/index.js";
+import { prismaClient } from "../../src/main/js/connection.mjs";
 import { randomUUID } from "node:crypto";
-
-const prismaClient = new PrismaClient();
 
 export const users = Object.freeze([
     Object.freeze({

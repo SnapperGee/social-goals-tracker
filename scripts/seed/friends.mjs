@@ -1,9 +1,7 @@
 import { users } from "./users.mjs";
-import { PrismaClient } from "../../src/main/prisma/index.js";
+import { prismaClient } from "../../src/main/js/connection.mjs";
 
 const getRandomUser = (indexToExclude) => users.filter((_, index) => index !== indexToExclude)[Math.floor(Math.random() * users.length - 1)];
-
-const prismaClient = new PrismaClient();
 
 export const friends = Object.freeze(users.filter((_, index) => index % 3 === 0).map((user, index) =>
     Object.freeze({
