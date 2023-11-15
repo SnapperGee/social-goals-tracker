@@ -60,7 +60,7 @@ module.exports = {
                 "@typescript-eslint/naming-convention": "error",
                 "no-array-constructor": "off",
                 "@typescript-eslint/no-array-constructor": "error",
-                "@typescript-eslint/no-confusing-void-expression": "error",
+                "@typescript-eslint/no-confusing-void-expression": ["error", {ignoreArrowShorthand: true}],
                 "@typescript-eslint/no-duplicate-enum-values": "error",
                 "@typescript-eslint/no-duplicate-type-constituents": "error",
                 "@typescript-eslint/no-empty-interface": "warn",
