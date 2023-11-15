@@ -17,7 +17,7 @@
     "prebuild-ts": "npm run clean-ts",
     "prisma-generate": "npx prisma generate",
     "seed": "node ./scripts/seed/index.mjs",
-    "start": "node ./src/main/js/server.mjs"
+    "start": "node --enable-source-maps ./src/main/js/server.mjs"
   },
   "keywords": [
     "social",
