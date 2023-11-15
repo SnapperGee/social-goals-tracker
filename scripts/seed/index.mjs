@@ -4,6 +4,6 @@ import { seedGoals } from './goals.mjs';
 import { seedMilestones } from './milestones.mjs';
 
 await seedUsers();
-// await seedFriends();
+await seedFriends();
 await seedGoals();
 await seedMilestones();
