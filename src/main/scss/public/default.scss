@@ -1,0 +1,7 @@
+/*
+ * If you need to overwrite Bootstrap variables, use "@import" instead of "@use".
+ *
+ * Ideally, instead of importing all of bootstrap, you should only import the
+ * sass partials that you need.
+ */
+@use "bootstrap";
