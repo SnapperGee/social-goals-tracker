@@ -79,7 +79,7 @@ module.exports = {
                 "no-loss-of-precision": "off",
                 "@typescript-eslint/no-loss-of-precision": "error",
                 "no-magic-numbers": "off",
-                "@typescript-eslint/no-magic-numbers": "warn",
+                "@typescript-eslint/no-magic-numbers": "off",
                 "@typescript-eslint/no-misused-new": "error",
                 "@typescript-eslint/no-misused-promises": "error",
                 "@typescript-eslint/no-mixed-enums": "warn",
