@@ -3,4 +3,29 @@
     <script src="login.mjs" type="module"></script>
 {{/section}}
 
-<h1>HOME PAGE</h1>
+<div class="main-container">
+<h1>Social Goals Tracker</h1>
+</div>
+<div class="columns-container">
+    <div class="login-container">
+        <h2>Login</h2>
+
+        <form action="/login" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+    <div class="goals-container">
+        <h1>Goals Container</h1>
+    </div>
+
+    <div class="banner-container">
+        <h1>Banner Container</h1>
+    </div>
+</div>
