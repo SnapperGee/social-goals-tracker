@@ -1,10 +1,10 @@
 import { prismaClient } from "../connection.mjs";
 import type { Request, Response } from "express";
 
-export const getGoalManager = (req: Request, res: Response): void =>
-    res.render("goal-manager");
+export const getGoalsManager = (req: Request, res: Response): void =>
+    res.render("goals-manager");
 
-export const getGoalManagerWithId = async (req: Request, res: Response): Promise<void> =>
+export const getGoalsManagerWithId = async (req: Request, res: Response): Promise<void> =>
 {
 
     try
@@ -19,9 +19,9 @@ export const getGoalManagerWithId = async (req: Request, res: Response): Promise
     }
 };
 
-export const goalManagerController = Object.freeze({
-    getGoalManager,
-    getGoalManagerWithId
+export const goalsManagerController = Object.freeze({
+    getGoalsManager,
+    getGoalsManagerWithId
 });
 
-export default goalManagerController;
+export default goalsManagerController;

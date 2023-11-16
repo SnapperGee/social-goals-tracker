@@ -1,9 +1,9 @@
 import { loginRouter } from "./login-route.mjs";
-import { goalManagerRouter } from "./goal-manager/goal-manager-route.mjs";
+import { goalsManagerRouter } from "./goals-manager/goals-manager-route.mjs";
 import { Router } from "express";
 
 export const router = Router();
 
-router.use(loginRouter, goalManagerRouter);
+router.use(loginRouter, goalsManagerRouter);
 
 export default router;
