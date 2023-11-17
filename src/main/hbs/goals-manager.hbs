@@ -20,29 +20,29 @@
             <div class="row align-items-center" id="goalsRow">
 
                 <div class="col" id="goalsCol">
+                    <form>
 
-                    <div class="row align-items-center">
-
-                        <div class="row">
-
-                            <div class="col offset-2">
-                                <h2 class="text-center">Goals</h2>
-                            </div>
-
-                            <div class="col">
-                                <h2 class="text-center">Milestones</h2>
-                            </div>
-
-                        </div>
-
-                        {{!-- Goals/Milestones row --}}
                         <div class="row align-items-center">
 
-                            <div class="col-1">
-                                <button class="btn btn-primary btn-lg shadow" type="button">Add Goal</button>
+                            <div class="row">
+
+                                <div class="col offset-2">
+                                    <h2 class="text-center">Goals</h2>
+                                </div>
+
+                                <div class="col">
+                                    <h2 class="text-center">Milestones</h2>
+                                </div>
+
                             </div>
 
-                            <form>
+                            {{!-- Goals/Milestones row --}}
+                            <div class="row align-items-center">
+
+                                <div class="col-1">
+                                    <button class="btn btn-primary btn-lg shadow" type="button">Add Goal</button>
+                                </div>
+
                                 {{!-- Update btn col --}}
                                 <div class="col-1">
                                     <button class="btn btn-secondary shadow" type="submit" disabled>Update</button>
@@ -79,7 +79,7 @@
                                     <ol class="list-group">
                                         <li class="list-group-item">
 
-                                            <p class="text-center m-0">&lt;Goal Name&gt; <span class="text-body-secondary">milestones</span></p>
+                                            <p class="text-center m-0">&lt;Goal Title&gt; <span class="text-body-secondary">milestones</span></p>
 
                                             <div class="ms-4 mb-2">
                                                 <input class="form-check-input me-1" type="checkbox" id="milestoneAccomplishedCheckbox">
@@ -91,12 +91,12 @@
                                         </li>
                                     </ol>
                                 </section>
-                            </form>
+
+                            </div>
 
                         </div>
 
-                    </div>
-
+                    </form>
                 </div>
 
             </div>
