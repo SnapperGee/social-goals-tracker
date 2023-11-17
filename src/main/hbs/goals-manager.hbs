@@ -43,60 +43,61 @@
                                     <button class="btn btn-primary btn-lg shadow" type="button">Add Goal</button>
                                 </div>
 
-                                {{!-- Update btn col --}}
-                                <div class="col-1">
-                                    <button class="btn btn-secondary shadow" type="submit" disabled>Update</button>
-                                </div>
+                                <form>
+                                    {{!-- Update btn col --}}
+                                    <div class="col-1">
+                                        <button class="btn btn-secondary shadow" type="submit" disabled>Update</button>
+                                    </div>
 
-                                {{!-- Goals col --}}
-                                <section class="col">
-                                    <ol class="list-group">
-                                        <li class="list-group-item">
+                                    {{!-- Goals col --}}
+                                    <section class="col">
+                                        <ol class="list-group">
+                                            <li class="list-group-item">
 
-                                            {{!-- Goal toggles/buttons --}}
-                                            <div class="d-flex justify-content-around align-items-center mb-2">
-                                                <div>
-                                                    <input class="form-check-input me-1" type="checkbox" id="goalAccomplishedCheckbox">
-                                                    <label class="form-check-label" for="goalAccomplishedCheckbox">Accomplished</label>
+                                                {{!-- Goal toggles/buttons --}}
+                                                <div class="d-flex justify-content-around align-items-center mb-2">
+                                                    <div>
+                                                        <input class="form-check-input me-1" type="checkbox" id="goalAccomplishedCheckbox">
+                                                        <label class="form-check-label" for="goalAccomplishedCheckbox">Accomplished</label>
+                                                    </div>
+
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                                        <label class="form-check-label" for="flexSwitchCheckDefault">Private</label>
+                                                    </div>
+
+                                                    <button type="button" class="btn btn-primary btn-sm active milestonesBtn" id="milestonesToggle" data-bs-toggle="button" aria-pressed="true">Milestones</button>
                                                 </div>
 
-                                                <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                                                    <label class="form-check-label" for="flexSwitchCheckDefault">Private</label>
+                                                <label for="goalTitle" class="form-label d-none">Goal Title</label>
+                                                <input type="text" class="form-control" id="goalTitle" placeholder="Goal">
+                                            </li>
+                                        </ol>
+                                    </section>
+
+                                    {{!-- Milestone col --}}
+                                    <section class="col">
+                                        <ol class="list-group">
+                                            <li class="list-group-item">
+
+                                                <p class="text-center m-0">&lt;Goal Name&gt; <span class="text-body-secondary">milestones</span></p>
+
+                                                <div class="ms-4 mb-2">
+                                                    <input class="form-check-input me-1" type="checkbox" id="milestoneAccomplishedCheckbox">
+                                                    <label class="form-check-label" for="milestoneAccomplishedCheckbox">Accomplished</label>
                                                 </div>
 
-                                                <button type="button" class="btn btn-primary btn-sm active milestonesBtn" id="milestonesToggle" data-bs-toggle="button" aria-pressed="true">Milestones</button>
-                                            </div>
-
-                                            <label for="goalTitle" class="form-label d-none">Goal Title</label>
-                                            <input type="text" class="form-control" id="goalTitle" placeholder="Goal">
-                                        </li>
-                                    </ol>
-                                </section>
-
-                                {{!-- Milestone col --}}
-                                <section class="col">
-                                    <ol class="list-group">
-                                        <li class="list-group-item">
-
-                                            <p class="text-center m-0">Goal Milestones</p>
-
-                                            <div class="ms-4 mb-2">
-                                                <input class="form-check-input me-1" type="checkbox" id="milestoneAccomplishedCheckbox">
-                                                <label class="form-check-label" for="milestoneAccomplishedCheckbox">Accomplished</label>
-                                            </div>
-
-                                            <label for="milestoneTitle" class="form-label d-none">Goal Title</label>
-                                            <input type="text" class="form-control" id="milestoneTitle" placeholder="Milestone">
-                                        </li>
-                                    </ol>
-                                </section>
+                                                <label for="milestoneTitle" class="form-label d-none">Milestone Title</label>
+                                                <input type="text" class="form-control" id="milestoneTitle" placeholder="Milestone">
+                                            </li>
+                                        </ol>
+                                    </section>
+                                </form>
 
                             </div>
 
                         </div>
 
-                    </form>
                 </div>
 
             </div>
