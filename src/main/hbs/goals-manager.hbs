@@ -26,7 +26,7 @@
                         <div class="row">
                             <div class="col-1">
                                 <button class="btn btn-secondary shadow mb-3" type="submit" disabled>Update</button>
-                                <button class="btn btn-primary shadow mb-3" type="button">Milestones</button>
+                                <button type="button" class="btn btn-primary active" id="mileStonesToggle" data-bs-toggle="button" aria-pressed="true">Milestones</button>
                             </div>
 
                             <div class="col-4">
@@ -40,7 +40,11 @@
                             </div>
 
                             <div class="col-1 my-auto">
-                                <button type="button" class="btn btn-primary active" data-bs-toggle="button" aria-pressed="true" id="privateBtn">Private</button>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">Private</label>
+                                </div>
+
                             </div>
                         </div>
 
