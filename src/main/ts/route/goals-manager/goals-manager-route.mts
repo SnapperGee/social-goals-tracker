@@ -3,7 +3,6 @@ import { Router } from "express";
 
 export const goalsManagerRouter = Router();
 
-goalsManagerRouter.get("/goalsmanager", goalsManagerController.getGoalsManager);
-goalsManagerRouter.get("/goalsmanager/:id", goalsManagerController.getGoalsManagerWithId);
+goalsManagerRouter.get("/goalsmanager/:id", goalsManagerController.getGoalsOfUserWithId);
 
 export default goalsManagerRouter;

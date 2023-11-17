@@ -1,17 +1,14 @@
 import { prismaClient } from "../connection.mjs";
 import type { Request, Response } from "express";
 
-export const getGoalsManager = (req: Request, res: Response): void =>
-    res.render("goals-manager");
-
-export const getGoalsManagerWithId = async (req: Request, res: Response): Promise<void> =>
+export const getGoalsOfUserWithId = async (req: Request, res: Response): Promise<void> =>
 {
-
     try
     {
         const goalId = req.params.id;
         const goal = await prismaClient.goal.findUnique({ where: { id: goalId } });
-        res.json(goal);
+        // res.json(goal);
+        res.render("goals-manager");
     }
     catch (error)
     {
@@ -20,8 +17,7 @@ export const getGoalsManagerWithId = async (req: Request, res: Response): Promis
 };
 
 export const goalsManagerController = Object.freeze({
-    getGoalsManager,
-    getGoalsManagerWithId
+    getGoalsOfUserWithId
 });
 
 export default goalsManagerController;
