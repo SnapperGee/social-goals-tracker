@@ -1,6 +1,6 @@
 console.log("Manage dem goals");
 
-const milestonesBtn = document.getElementById("mileStonesToggle");
+const milestonesBtn = document.getElementById("milestonesToggle");
 
 milestonesBtn?.addEventListener("click", (event) =>
 {
