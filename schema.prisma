@@ -1,7 +1,6 @@
 generator client {
-  provider      = "prisma-client-js"
-  output        = "./src/main/prisma"
-  binaryTargets = ["native"]
+  provider = "prisma-client-js"
+  output   = "./src/main/prisma"
 }
 
 datasource db {
@@ -20,23 +19,21 @@ model friends {
 }
 
 model goal {
-  id          String      @id @default(dbgenerated("(uuid())")) @db.Char(36)
-  title       String      @db.Char(255)
-  description String?     @db.VarChar(255)
-  private     Boolean     @default(false)
-  user_id     String      @db.Char(36)
-  user        user        @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "user_id_fk")
-  milestone   milestone[]
+  id        String      @id @default(dbgenerated("(uuid())")) @db.Char(36)
+  title     String      @db.Char(255)
+  private   Boolean     @default(false)
+  user_id   String      @db.Char(36)
+  user      user        @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "user_id_fk")
+  milestone milestone[]
 
   @@index([user_id], map: "user_id_fk")
 }
 
 model milestone {
-  id          String  @id @default(dbgenerated("(uuid())")) @db.Char(36)
-  title       String  @db.Char(255)
-  description String? @db.VarChar(255)
-  goal_id     String  @db.Char(36)
-  goal        goal    @relation(fields: [goal_id], references: [id], onDelete: Cascade, map: "goal_id_fk")
+  id      String @id @default(dbgenerated("(uuid())")) @db.Char(36)
+  title   String @db.Char(255)
+  goal_id String @db.Char(36)
+  goal    goal   @relation(fields: [goal_id], references: [id], onDelete: Cascade, map: "goal_id_fk")
 
   @@index([goal_id], map: "goal_id_fk")
 }

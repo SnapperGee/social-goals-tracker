@@ -1,7 +1,6 @@
 CREATE TABLE `goal` (
   `id` CHAR(36) NOT NULL DEFAULT UUID(),
   `title` CHAR(255) NOT NULL CHECK (CHAR_LENGTH(TRIM(`title`)) > 0),
-  `description` VARCHAR(255) DEFAULT NULL CHECK (CHAR_LENGTH(TRIM(`description`)) > 0),
   `private` BOOLEAN NOT NULL DEFAULT FALSE,
   `user_id` CHAR(36) NOT NULL,
   PRIMARY KEY (`id`),

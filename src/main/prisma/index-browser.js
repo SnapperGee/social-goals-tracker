@@ -115,7 +115,6 @@ exports.Prisma.FriendsScalarFieldEnum = {
 exports.Prisma.GoalScalarFieldEnum = {
   id: 'id',
   title: 'title',
-  description: 'description',
   private: 'private',
   user_id: 'user_id'
 };
@@ -123,7 +122,6 @@ exports.Prisma.GoalScalarFieldEnum = {
 exports.Prisma.MilestoneScalarFieldEnum = {
   id: 'id',
   title: 'title',
-  description: 'description',
   goal_id: 'goal_id'
 };
 
@@ -136,11 +134,6 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
-};
-
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
 };
 
 

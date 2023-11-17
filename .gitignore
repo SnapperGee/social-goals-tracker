@@ -6,7 +6,3 @@ node_modules
 .env
 src/main/css
 src/main/js
-src/main/prisma/*
-!src/main/prisma/runtime
-!src/main/prisma/**/*.js
-!src/main/prisma/**/*.d.ts

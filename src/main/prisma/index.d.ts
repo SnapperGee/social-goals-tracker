@@ -2092,7 +2092,6 @@ export namespace Prisma {
   export type GoalMinAggregateOutputType = {
     id: string | null
     title: string | null
-    description: string | null
     private: boolean | null
     user_id: string | null
   }
@@ -2100,7 +2099,6 @@ export namespace Prisma {
   export type GoalMaxAggregateOutputType = {
     id: string | null
     title: string | null
-    description: string | null
     private: boolean | null
     user_id: string | null
   }
@@ -2108,7 +2106,6 @@ export namespace Prisma {
   export type GoalCountAggregateOutputType = {
     id: number
     title: number
-    description: number
     private: number
     user_id: number
     _all: number
@@ -2118,7 +2115,6 @@ export namespace Prisma {
   export type GoalMinAggregateInputType = {
     id?: true
     title?: true
-    description?: true
     private?: true
     user_id?: true
   }
@@ -2126,7 +2122,6 @@ export namespace Prisma {
   export type GoalMaxAggregateInputType = {
     id?: true
     title?: true
-    description?: true
     private?: true
     user_id?: true
   }
@@ -2134,7 +2129,6 @@ export namespace Prisma {
   export type GoalCountAggregateInputType = {
     id?: true
     title?: true
-    description?: true
     private?: true
     user_id?: true
     _all?: true
@@ -2215,7 +2209,6 @@ export namespace Prisma {
   export type GoalGroupByOutputType = {
     id: string
     title: string
-    description: string | null
     private: boolean
     user_id: string
     _count: GoalCountAggregateOutputType | null
@@ -2240,7 +2233,6 @@ export namespace Prisma {
   export type goalSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
-    description?: boolean
     private?: boolean
     user_id?: boolean
     user?: boolean | userDefaultArgs<ExtArgs>
@@ -2251,7 +2243,6 @@ export namespace Prisma {
   export type goalSelectScalar = {
     id?: boolean
     title?: boolean
-    description?: boolean
     private?: boolean
     user_id?: boolean
   }
@@ -2272,7 +2263,6 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       title: string
-      description: string | null
       private: boolean
       user_id: string
     }, ExtArgs["result"]["goal"]>
@@ -2674,7 +2664,6 @@ export namespace Prisma {
   interface goalFieldRefs {
     readonly id: FieldRef<"goal", 'String'>
     readonly title: FieldRef<"goal", 'String'>
-    readonly description: FieldRef<"goal", 'String'>
     readonly private: FieldRef<"goal", 'Boolean'>
     readonly user_id: FieldRef<"goal", 'String'>
   }
@@ -3038,21 +3027,18 @@ export namespace Prisma {
   export type MilestoneMinAggregateOutputType = {
     id: string | null
     title: string | null
-    description: string | null
     goal_id: string | null
   }
 
   export type MilestoneMaxAggregateOutputType = {
     id: string | null
     title: string | null
-    description: string | null
     goal_id: string | null
   }
 
   export type MilestoneCountAggregateOutputType = {
     id: number
     title: number
-    description: number
     goal_id: number
     _all: number
   }
@@ -3061,21 +3047,18 @@ export namespace Prisma {
   export type MilestoneMinAggregateInputType = {
     id?: true
     title?: true
-    description?: true
     goal_id?: true
   }
 
   export type MilestoneMaxAggregateInputType = {
     id?: true
     title?: true
-    description?: true
     goal_id?: true
   }
 
   export type MilestoneCountAggregateInputType = {
     id?: true
     title?: true
-    description?: true
     goal_id?: true
     _all?: true
   }
@@ -3155,7 +3138,6 @@ export namespace Prisma {
   export type MilestoneGroupByOutputType = {
     id: string
     title: string
-    description: string | null
     goal_id: string
     _count: MilestoneCountAggregateOutputType | null
     _min: MilestoneMinAggregateOutputType | null
@@ -3179,7 +3161,6 @@ export namespace Prisma {
   export type milestoneSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
-    description?: boolean
     goal_id?: boolean
     goal?: boolean | goalDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["milestone"]>
@@ -3187,7 +3168,6 @@ export namespace Prisma {
   export type milestoneSelectScalar = {
     id?: boolean
     title?: boolean
-    description?: boolean
     goal_id?: boolean
   }
 
@@ -3204,7 +3184,6 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       title: string
-      description: string | null
       goal_id: string
     }, ExtArgs["result"]["milestone"]>
     composites: {}
@@ -3603,7 +3582,6 @@ export namespace Prisma {
   interface milestoneFieldRefs {
     readonly id: FieldRef<"milestone", 'String'>
     readonly title: FieldRef<"milestone", 'String'>
-    readonly description: FieldRef<"milestone", 'String'>
     readonly goal_id: FieldRef<"milestone", 'String'>
   }
     
@@ -4928,7 +4906,6 @@ export namespace Prisma {
   export const GoalScalarFieldEnum: {
     id: 'id',
     title: 'title',
-    description: 'description',
     private: 'private',
     user_id: 'user_id'
   };
@@ -4939,7 +4916,6 @@ export namespace Prisma {
   export const MilestoneScalarFieldEnum: {
     id: 'id',
     title: 'title',
-    description: 'description',
     goal_id: 'goal_id'
   };
 
@@ -4961,14 +4937,6 @@ export namespace Prisma {
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
-
-
-  export const NullsOrder: {
-    first: 'first',
-    last: 'last'
-  };
-
-  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -5050,7 +5018,6 @@ export namespace Prisma {
     NOT?: goalWhereInput | goalWhereInput[]
     id?: StringFilter<"goal"> | string
     title?: StringFilter<"goal"> | string
-    description?: StringNullableFilter<"goal"> | string | null
     private?: BoolFilter<"goal"> | boolean
     user_id?: StringFilter<"goal"> | string
     user?: XOR<UserRelationFilter, userWhereInput>
@@ -5060,7 +5027,6 @@ export namespace Prisma {
   export type goalOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
-    description?: SortOrderInput | SortOrder
     private?: SortOrder
     user_id?: SortOrder
     user?: userOrderByWithRelationInput
@@ -5073,7 +5039,6 @@ export namespace Prisma {
     OR?: goalWhereInput[]
     NOT?: goalWhereInput | goalWhereInput[]
     title?: StringFilter<"goal"> | string
-    description?: StringNullableFilter<"goal"> | string | null
     private?: BoolFilter<"goal"> | boolean
     user_id?: StringFilter<"goal"> | string
     user?: XOR<UserRelationFilter, userWhereInput>
@@ -5083,7 +5048,6 @@ export namespace Prisma {
   export type goalOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
-    description?: SortOrderInput | SortOrder
     private?: SortOrder
     user_id?: SortOrder
     _count?: goalCountOrderByAggregateInput
@@ -5097,7 +5061,6 @@ export namespace Prisma {
     NOT?: goalScalarWhereWithAggregatesInput | goalScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"goal"> | string
     title?: StringWithAggregatesFilter<"goal"> | string
-    description?: StringNullableWithAggregatesFilter<"goal"> | string | null
     private?: BoolWithAggregatesFilter<"goal"> | boolean
     user_id?: StringWithAggregatesFilter<"goal"> | string
   }
@@ -5108,7 +5071,6 @@ export namespace Prisma {
     NOT?: milestoneWhereInput | milestoneWhereInput[]
     id?: StringFilter<"milestone"> | string
     title?: StringFilter<"milestone"> | string
-    description?: StringNullableFilter<"milestone"> | string | null
     goal_id?: StringFilter<"milestone"> | string
     goal?: XOR<GoalRelationFilter, goalWhereInput>
   }
@@ -5116,7 +5078,6 @@ export namespace Prisma {
   export type milestoneOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
-    description?: SortOrderInput | SortOrder
     goal_id?: SortOrder
     goal?: goalOrderByWithRelationInput
   }
@@ -5127,7 +5088,6 @@ export namespace Prisma {
     OR?: milestoneWhereInput[]
     NOT?: milestoneWhereInput | milestoneWhereInput[]
     title?: StringFilter<"milestone"> | string
-    description?: StringNullableFilter<"milestone"> | string | null
     goal_id?: StringFilter<"milestone"> | string
     goal?: XOR<GoalRelationFilter, goalWhereInput>
   }, "id">
@@ -5135,7 +5095,6 @@ export namespace Prisma {
   export type milestoneOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
-    description?: SortOrderInput | SortOrder
     goal_id?: SortOrder
     _count?: milestoneCountOrderByAggregateInput
     _max?: milestoneMaxOrderByAggregateInput
@@ -5148,7 +5107,6 @@ export namespace Prisma {
     NOT?: milestoneScalarWhereWithAggregatesInput | milestoneScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"milestone"> | string
     title?: StringWithAggregatesFilter<"milestone"> | string
-    description?: StringNullableWithAggregatesFilter<"milestone"> | string | null
     goal_id?: StringWithAggregatesFilter<"milestone"> | string
   }
 
@@ -5240,7 +5198,6 @@ export namespace Prisma {
   export type goalCreateInput = {
     id?: string
     title: string
-    description?: string | null
     private?: boolean
     user: userCreateNestedOneWithoutGoalInput
     milestone?: milestoneCreateNestedManyWithoutGoalInput
@@ -5249,7 +5206,6 @@ export namespace Prisma {
   export type goalUncheckedCreateInput = {
     id?: string
     title: string
-    description?: string | null
     private?: boolean
     user_id: string
     milestone?: milestoneUncheckedCreateNestedManyWithoutGoalInput
@@ -5258,7 +5214,6 @@ export namespace Prisma {
   export type goalUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
     private?: BoolFieldUpdateOperationsInput | boolean
     user?: userUpdateOneRequiredWithoutGoalNestedInput
     milestone?: milestoneUpdateManyWithoutGoalNestedInput
@@ -5267,7 +5222,6 @@ export namespace Prisma {
   export type goalUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
     private?: BoolFieldUpdateOperationsInput | boolean
     user_id?: StringFieldUpdateOperationsInput | string
     milestone?: milestoneUncheckedUpdateManyWithoutGoalNestedInput
@@ -5276,7 +5230,6 @@ export namespace Prisma {
   export type goalCreateManyInput = {
     id?: string
     title: string
-    description?: string | null
     private?: boolean
     user_id: string
   }
@@ -5284,14 +5237,12 @@ export namespace Prisma {
   export type goalUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
     private?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type goalUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
     private?: BoolFieldUpdateOperationsInput | boolean
     user_id?: StringFieldUpdateOperationsInput | string
   }
@@ -5299,48 +5250,41 @@ export namespace Prisma {
   export type milestoneCreateInput = {
     id?: string
     title: string
-    description?: string | null
     goal: goalCreateNestedOneWithoutMilestoneInput
   }
 
   export type milestoneUncheckedCreateInput = {
     id?: string
     title: string
-    description?: string | null
     goal_id: string
   }
 
   export type milestoneUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
     goal?: goalUpdateOneRequiredWithoutMilestoneNestedInput
   }
 
   export type milestoneUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
     goal_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type milestoneCreateManyInput = {
     id?: string
     title: string
-    description?: string | null
     goal_id: string
   }
 
   export type milestoneUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type milestoneUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
     goal_id?: StringFieldUpdateOperationsInput | string
   }
 
@@ -5454,20 +5398,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
   export type BoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -5479,11 +5409,6 @@ export namespace Prisma {
     none?: milestoneWhereInput
   }
 
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
-  }
-
   export type milestoneOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -5491,7 +5416,6 @@ export namespace Prisma {
   export type goalCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    description?: SortOrder
     private?: SortOrder
     user_id?: SortOrder
   }
@@ -5499,7 +5423,6 @@ export namespace Prisma {
   export type goalMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    description?: SortOrder
     private?: SortOrder
     user_id?: SortOrder
   }
@@ -5507,26 +5430,8 @@ export namespace Prisma {
   export type goalMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    description?: SortOrder
     private?: SortOrder
     user_id?: SortOrder
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -5545,21 +5450,18 @@ export namespace Prisma {
   export type milestoneCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    description?: SortOrder
     goal_id?: SortOrder
   }
 
   export type milestoneMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    description?: SortOrder
     goal_id?: SortOrder
   }
 
   export type milestoneMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    description?: SortOrder
     goal_id?: SortOrder
   }
 
@@ -5651,10 +5553,6 @@ export namespace Prisma {
     connectOrCreate?: milestoneCreateOrConnectWithoutGoalInput | milestoneCreateOrConnectWithoutGoalInput[]
     createMany?: milestoneCreateManyGoalInputEnvelope
     connect?: milestoneWhereUniqueInput | milestoneWhereUniqueInput[]
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -5879,51 +5777,9 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -6054,13 +5910,11 @@ export namespace Prisma {
   export type milestoneCreateWithoutGoalInput = {
     id?: string
     title: string
-    description?: string | null
   }
 
   export type milestoneUncheckedCreateWithoutGoalInput = {
     id?: string
     title: string
-    description?: string | null
   }
 
   export type milestoneCreateOrConnectWithoutGoalInput = {
@@ -6122,14 +5976,12 @@ export namespace Prisma {
     NOT?: milestoneScalarWhereInput | milestoneScalarWhereInput[]
     id?: StringFilter<"milestone"> | string
     title?: StringFilter<"milestone"> | string
-    description?: StringNullableFilter<"milestone"> | string | null
     goal_id?: StringFilter<"milestone"> | string
   }
 
   export type goalCreateWithoutMilestoneInput = {
     id?: string
     title: string
-    description?: string | null
     private?: boolean
     user: userCreateNestedOneWithoutGoalInput
   }
@@ -6137,7 +5989,6 @@ export namespace Prisma {
   export type goalUncheckedCreateWithoutMilestoneInput = {
     id?: string
     title: string
-    description?: string | null
     private?: boolean
     user_id: string
   }
@@ -6161,7 +6012,6 @@ export namespace Prisma {
   export type goalUpdateWithoutMilestoneInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
     private?: BoolFieldUpdateOperationsInput | boolean
     user?: userUpdateOneRequiredWithoutGoalNestedInput
   }
@@ -6169,7 +6019,6 @@ export namespace Prisma {
   export type goalUncheckedUpdateWithoutMilestoneInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
     private?: BoolFieldUpdateOperationsInput | boolean
     user_id?: StringFieldUpdateOperationsInput | string
   }
@@ -6213,7 +6062,6 @@ export namespace Prisma {
   export type goalCreateWithoutUserInput = {
     id?: string
     title: string
-    description?: string | null
     private?: boolean
     milestone?: milestoneCreateNestedManyWithoutGoalInput
   }
@@ -6221,7 +6069,6 @@ export namespace Prisma {
   export type goalUncheckedCreateWithoutUserInput = {
     id?: string
     title: string
-    description?: string | null
     private?: boolean
     milestone?: milestoneUncheckedCreateNestedManyWithoutGoalInput
   }
@@ -6298,7 +6145,6 @@ export namespace Prisma {
     NOT?: goalScalarWhereInput | goalScalarWhereInput[]
     id?: StringFilter<"goal"> | string
     title?: StringFilter<"goal"> | string
-    description?: StringNullableFilter<"goal"> | string | null
     private?: BoolFilter<"goal"> | boolean
     user_id?: StringFilter<"goal"> | string
   }
@@ -6306,25 +6152,21 @@ export namespace Prisma {
   export type milestoneCreateManyGoalInput = {
     id?: string
     title: string
-    description?: string | null
   }
 
   export type milestoneUpdateWithoutGoalInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type milestoneUncheckedUpdateWithoutGoalInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type milestoneUncheckedUpdateManyWithoutGoalInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type friendsCreateManyUser_friends_sourceTouserInput = {
@@ -6338,7 +6180,6 @@ export namespace Prisma {
   export type goalCreateManyUserInput = {
     id?: string
     title: string
-    description?: string | null
     private?: boolean
   }
 
@@ -6369,7 +6210,6 @@ export namespace Prisma {
   export type goalUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
     private?: BoolFieldUpdateOperationsInput | boolean
     milestone?: milestoneUpdateManyWithoutGoalNestedInput
   }
@@ -6377,7 +6217,6 @@ export namespace Prisma {
   export type goalUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
     private?: BoolFieldUpdateOperationsInput | boolean
     milestone?: milestoneUncheckedUpdateManyWithoutGoalNestedInput
   }
@@ -6385,7 +6224,6 @@ export namespace Prisma {
   export type goalUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
     private?: BoolFieldUpdateOperationsInput | boolean
   }
 
