@@ -3,7 +3,7 @@
     <script src="/goals-manager.mjs" type="module"></script>
 {{/section}}
 
-<h1 class="text-center">Goals Manager</h1>
+<h1 class="text-center text-decoration-underline">Goals Manager</h1>
 
 <div class="container-fluid">
 
@@ -14,7 +14,7 @@
             <p>Navbar</p>
         </nav>
 
-        <div class="col" id="goalsAndMilestoneCol">
+        <main class="col" id="goalsAndMilestoneCol">
 
             {{!-- Goals row --}}
             <div class="row align-items-center" id="goalsRow">
@@ -36,10 +36,11 @@
 
                             </div>
 
+                            {{!-- Goals/Milestones row --}}
                             <div class="row align-items-center">
 
                                 <div class="col-1">
-                                    <button class="btn btn-primary btn-lg shadow mb-3" type="button">Add Goal</button>
+                                    <button class="btn btn-primary btn-lg shadow" type="button">Add Goal</button>
                                 </div>
 
                                 {{!-- Update btn col --}}
@@ -47,11 +48,12 @@
                                     <button class="btn btn-secondary shadow" type="submit" disabled>Update</button>
                                 </div>
 
-                                {{!-- Goal col --}}
-                                <div class="col">
+                                {{!-- Goals col --}}
+                                <section class="col">
                                     <ol class="list-group">
                                         <li class="list-group-item">
 
+                                            {{!-- Goal toggles/buttons --}}
                                             <div class="d-flex justify-content-around align-items-center mb-2">
                                                 <div>
                                                     <input class="form-check-input me-1" type="checkbox" value="" id="goalAccomplishedCheckbox">
@@ -70,10 +72,10 @@
                                             <input type="text" class="form-control" id="goalTitle" placeholder="Goal">
                                         </li>
                                     </ol>
-                                </div>
+                                </section>
 
                                 {{!-- Milestone col --}}
-                                <div class="col">
+                                <section class="col">
                                     <ol class="list-group">
                                         <li class="list-group-item">
 
@@ -88,7 +90,7 @@
                                             <input type="text" class="form-control" id="milestoneTitle" placeholder="Milestone">
                                         </li>
                                     </ol>
-                                </div>
+                                </section>
 
                             </div>
 
@@ -99,7 +101,7 @@
 
             </div>
 
-        </div>
+        </main>
 
     </div>
 </div>
