@@ -1,8 +1,6 @@
 import { users } from "./users.mjs";
-import { PrismaClient } from "../../src/main/prisma/index.js";
+import { prismaClient } from "../../src/main/js/connection.mjs";
 import { randomUUID } from "node:crypto";
-
-const prismaClient = new PrismaClient();
 
 export const goals = Object.freeze(users.map((user, index) =>
     Object.freeze(index % 2 === 0 ? {
