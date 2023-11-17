@@ -3,15 +3,9 @@ import { prismaClient } from "../../src/main/js/connection.mjs";
 import { randomUUID } from "node:crypto";
 
 export const milestones = Object.freeze(goals.map((goal, index) =>
-    Object.freeze(index % 2 === 0 ? {
+    Object.freeze({
         id: randomUUID(),
         title: `${goal.title} Milestone Title`,
-        goal_id: goal.id
-    }
-    : {
-        id: randomUUID(),
-        title: `${goal.title} Milestone Title`,
-        description: `${goal.title}'s milestone description.`,
         goal_id: goal.id
     })
 ));
