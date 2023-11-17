@@ -5,10 +5,10 @@ export const getGoalsOfUserWithId = async (req: Request, res: Response): Promise
 {
     try
     {
-        const goalId = req.params.id;
-        const goal = await prismaClient.goal.findUnique({ where: { id: goalId } });
-        // res.json(goal);
-        res.render("goals-manager");
+        const { userId } = req.params;
+        const user = await prismaClient.user.findUnique({ where: { id: userId } });
+        res.json(user);
+        // res.render("goals-manager");
     }
     catch (error)
     {
