@@ -1,23 +1,8 @@
-export const accomplishedCheckboxDiv = (checkBoxId: string): HTMLDivElement =>
-{
-    const checkbox = document.createElement("input");
-    checkbox.id = checkBoxId;
-    checkbox.classList.add("form-check-input", "me-1");
-    checkbox.type = "checkbox";
+import type { AccomplishedCheckboxDiv } from "./shared-component.mjs";
 
-    const label = document.createElement("label");
-    label.classList.add("form-check-label");
-    label.htmlFor = checkBoxId;
-    label.textContent = "Accomplished";
+type HTMLPrivateToggleSwitchDiv = HTMLDivElement;
 
-    const div = document.createElement("div");
-    div.appendChild(checkbox);
-    div.appendChild(label);
-
-    return div;
-};
-
-export const privateToggleSwitchDiv = (switchId: string): HTMLDivElement =>
+export const privateToggleSwitchDiv = (switchId: string): HTMLPrivateToggleSwitchDiv =>
 {
     const checkbox = document.createElement("input");
     checkbox.id = switchId;
@@ -68,26 +53,18 @@ export const milestonesToggleBtn = (): MilestonesToggleBtn =>
     return btn;
 };
 
-export const goalTitleLabelAndTextInput = (id: string, title: string): { label: HTMLLabelElement; input: HTMLInputElement } =>
+export const togglesAndButtons = ( accomplishedCheckboxDiv: AccomplishedCheckboxDiv,
+                                   privateToggleSwitchDiv: HTMLPrivateToggleSwitchDiv,
+                                   milestonesToggleBtn: MilestonesToggleBtn ): HTMLDivElement =>
 {
-    const label = document.createElement("label");
-    label.htmlFor = id;
-    label.classList.add("form-label", "d-none");
-    label.textContent = `${title} Goal Title`;
-
-    const input = document.createElement("input");
-    input.id = id;
-    input.type = "text";
-    input.classList.add("form-control");
-    input.placeholder = "Goal Title";
-
-    return {label, input};
+    const div = document.createElement("div");
+    div.classList.add("d-flex", "justify-content-around", "align-items-center", "mb-2");
+    div.appendChild(accomplishedCheckboxDiv);
+    div.appendChild(privateToggleSwitchDiv);
+    div.appendChild(milestonesToggleBtn);
+    return div;
 };
 
-export const create = Object.freeze(
-{
-    accomplishedCheckboxDiv,
-    privateToggleSwitchDiv,
-    milestonesToggleBtn,
-    goalTitleLabelAndTextInput
+export const create = Object.freeze({
+    privateToggleSwitchDiv, milestonesToggleBtn
 });
