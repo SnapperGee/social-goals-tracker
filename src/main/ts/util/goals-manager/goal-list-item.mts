@@ -47,21 +47,21 @@ export interface MilestonesToggleBtn extends HTMLButtonElement
 export const milestonesToggleBtn = (): MilestonesToggleBtn =>
 {
     const btn = document.createElement("button") as MilestonesToggleBtn;
-    btn.classList.add("btn", "btn-primary", "btn-sm", "active");
-    btn.type = "submit";
+    btn.classList.add("btn", "btn-outline-primary", "btn-sm", "milestoneToggleBtn");
+    btn.type = "button";
     btn.dataset.bsToggle = "button";
     btn.ariaPressed = "false";
     btn.textContent = "Milestones";
 
     btn.setPressed = (): void =>
     {
-        btn.classList.remove("active");
+        btn.classList.add("active");
         btn.ariaPressed = "true";
     };
 
     btn.setNotPressed = (): void =>
     {
-        btn.classList.add("active");
+        btn.classList.remove("active");
         btn.ariaPressed = "false";
     };
 
