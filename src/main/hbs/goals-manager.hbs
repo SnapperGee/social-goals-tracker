@@ -43,8 +43,9 @@
                                 </div>
 
                                 {{!-- Update btn col --}}
-                                <div class="col-1">
-                                    <button class="btn btn-secondary shadow" type="submit" disabled>Update</button>
+                                <div class="col-1 text-center">
+                                    <button class="btn btn-secondary shadow mb-1" type="submit" disabled>Update</button>
+                                    <button class="btn btn-danger btn-sm shadow mt-1" type="button">Delete</button>
                                 </div>
 
                                 {{!-- Goals col --}}
@@ -80,9 +81,13 @@
 
                                             <p class="text-center m-0">&lt;Goal Title&gt; <span class="text-body-secondary">milestones</span></p>
 
-                                            <div class="ms-4 mb-2">
-                                                <input class="form-check-input me-1" type="checkbox" id="milestoneAccomplishedCheckbox">
-                                                <label class="form-check-label" for="milestoneAccomplishedCheckbox">Accomplished</label>
+                                            <div class="d-flex px-4 mb-2 justify-content-between">
+                                                <div>
+                                                    <input class="form-check-input me-1" type="checkbox" id="milestoneAccomplishedCheckbox">
+                                                    <label class="form-check-label" for="milestoneAccomplishedCheckbox">Accomplished</label>
+                                                </div>
+
+                                                <button class="btn btn-danger btn-sm shadow" type="button">Delete</button>
                                             </div>
 
                                             <label for="milestoneTitle" class="form-label d-none">Milestone Title</label>
