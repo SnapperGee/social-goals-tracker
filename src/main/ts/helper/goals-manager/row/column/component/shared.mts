@@ -2,7 +2,7 @@ import type { GoalOrMilestoneId } from "../../delete-btn.mjs";
 
 export type AccomplishedCheckbox = HTMLDivElement;
 
-export const accomplishedCheckboxDiv = (opts: GoalOrMilestoneId): AccomplishedCheckbox =>
+export const accomplishedCheckbox = (opts: GoalOrMilestoneId): AccomplishedCheckbox =>
 {
     const checkbox = document.createElement("input");
     checkbox.classList.add("form-check-input", "me-1");
@@ -16,7 +16,7 @@ export const accomplishedCheckboxDiv = (opts: GoalOrMilestoneId): AccomplishedCh
     {
         if (opts.goalId.trim().length === 0)
         {
-            throw new Error(`${accomplishedCheckboxDiv.name}: goal ID is empty.`);
+            throw new Error(`${accomplishedCheckbox.name}: goal ID is empty.`);
         }
         const checkBoxId = `goal-accomplished_${opts.goalId}`;
         checkbox.id = checkBoxId;
@@ -27,7 +27,7 @@ export const accomplishedCheckboxDiv = (opts: GoalOrMilestoneId): AccomplishedCh
     {
         if (opts.milestoneId.trim().length === 0)
         {
-            throw new Error(`${accomplishedCheckboxDiv.name}: milestone ID is empty.`);
+            throw new Error(`${accomplishedCheckbox.name}: milestone ID is empty.`);
         }
 
         const checkBoxId = `milestone-accomplished_${opts.milestoneId}`;
@@ -37,7 +37,7 @@ export const accomplishedCheckboxDiv = (opts: GoalOrMilestoneId): AccomplishedCh
     }
     else
     {
-        throw new Error(`${accomplishedCheckboxDiv.name}: neither goal nor milestone ID provided: ${opts}`);
+        throw new Error(`${accomplishedCheckbox.name}: neither goal nor milestone ID provided: ${opts}`);
     }
 
     const div = document.createElement("div");
@@ -106,5 +106,5 @@ export const titleLabelAndTextInput = (title: string, opts: GoalOrMilestoneId): 
 };
 
 export const create = Object.freeze({
-    accomplishedCheckboxDiv, titleLabelAndTextInput
+    accomplishedCheckboxDiv: accomplishedCheckbox, titleLabelAndTextInput
 });
