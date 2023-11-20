@@ -1,4 +1,6 @@
-export const milestoneParagraph = (goalTitle: string): HTMLParagraphElement =>
+export type MilestoneParagraph = HTMLParagraphElement;
+
+export const milestoneParagraph = (goalTitle: string): MilestoneParagraph =>
 {
     const span = document.createElement("span");
     span.classList.add("text-body-secondary");
@@ -10,3 +12,5 @@ export const milestoneParagraph = (goalTitle: string): HTMLParagraphElement =>
 
     return paragraph;
 };
+
+export default milestoneParagraph;
