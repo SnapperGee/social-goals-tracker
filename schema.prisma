@@ -20,12 +20,12 @@ model friends {
 }
 
 model goal {
-  id        String      @id @default(dbgenerated("(uuid())")) @db.Char(36)
-  title     String      @db.Char(255)
-  private   Boolean     @default(false)
-  user_id   String      @db.Char(36)
-  user      user        @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "user_id_fk")
-  milestone milestone[]
+  id         String      @id @default(dbgenerated("(uuid())")) @db.Char(36)
+  title      String      @db.Char(255)
+  private    Boolean     @default(false)
+  user_id    String      @db.Char(36)
+  user       user        @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "user_id_fk")
+  milestones milestone[]
 
   @@index([user_id], map: "user_id_fk")
 }
@@ -45,5 +45,5 @@ model user {
   password                     String    @db.Char(100)
   friends_friends_sourceTouser friends[] @relation("friends_sourceTouser")
   friends_friends_targetTouser friends[] @relation("friends_targetTouser")
-  goal                         goal[]
+  goals                        goal[]
 }
