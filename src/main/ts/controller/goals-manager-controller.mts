@@ -9,13 +9,12 @@ export const getGoalsOfUserWithId = async (req: Request, res: Response): Promise
         const userData = await prismaClient.user.findUnique({
             where: { id: userId },
             include: {
-                goal: {
-                    include: { milestone: true }
+                goals: {
+                    include: { milestones: true }
                 }
             }
         });
-        res.json(userData);
-        // res.render("goals-manager");
+        res.render("goals-manager", { userData });
     }
     catch (error)
     {
