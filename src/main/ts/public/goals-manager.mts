@@ -17,6 +17,14 @@ for (let index = milestoneButtons.length - 1; index >= 0; --index)
             else
             {
                 clickedBtn.classList.add("active");
+                for (let index = milestoneButtons.length - 1; index >= 0; --index)
+                {
+                    const btn = milestoneButtons[index];
+                    if (btn !== clickedBtn)
+                    {
+                        btn.classList.remove("active");
+                    }
+                }
             }
 
             clickedBtn.ariaPressed = clickedBtn.ariaPressed === "true" ? "false" : "true";
