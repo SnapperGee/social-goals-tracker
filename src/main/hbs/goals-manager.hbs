@@ -10,59 +10,50 @@
     {{!-- root row --}}
     <div class="row">
 
+        {{!-- nav column to left --}}
         <nav class="col-1 bg-primary" id="navBarCol">
             <p>Navbar</p>
         </nav>
 
-        <main class="col" id="goalsAndMilestoneCol">
+        {{!-- column of stacked goals and milestones create/edit/delete options to right of navbar --}}
+        <main class="col">
 
-            {{!-- Goals row --}}
-            <div class="row align-items-center" id="goalsRow">
+            {{!-- root row of goal and milestone create/edit/delete options --}}
+            <div class="row">
 
-                <div class="col" id="goalsCol">
-
-                        <div class="row align-items-center">
-
-                            <div class="row">
-
-                                <div class="col offset-1">
-                                    <div class="d-flex justify-content-around align-items-center">
-                                        <h2 class="h2">Goals:</h2>
-                                        <button class="btn btn-primary btn-lg shadow mb-2" id="addGoalBtn" type="button">Add</button>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div class="d-flex justify-content-around align-items-center">
-                                        <h2 class="h2">Milestones:</h2>
-                                        <button class="btn btn-primary btn-lg shadow mb-2" type="button">Add</button>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            {{!-- Goals/Milestones row --}}
-                            <form class="row">
-
-                                {{!-- column of goals "rows" (flexboxes) --}}
-                                <section class="col-7">
-                                    {{#each userData.goals as |goal|}}
-                                        {{>goal-row goal}}
-                                    {{/each}}
-                                </section>
-
-                                {{!-- Milestone col --}}
-                                <section class="col-5">
-                                    {{#each userData.goals as |goal|}}
-                                        {{>milestones-div goal}}
-                                    {{/each}}
-                                </section>
-
-                            </form>
-
+                {{!-- Goals/Milestones header row --}}
+                <div class="row">
+                    <div class="col offset-1">
+                        <div class="d-flex justify-content-around align-items-center">
+                            <h2 class="h2">Goals:</h2>
+                            <button class="btn btn-primary btn-lg shadow mb-2" id="addGoalBtn" type="button">Add</button>
                         </div>
+                    </div>
 
+                    <div class="col">
+                        <div class="d-flex justify-content-around align-items-center">
+                            <h2 class="h2">Milestones:</h2>
+                            <button class="btn btn-primary btn-lg shadow mb-2" type="button">Add</button>
+                        </div>
+                    </div>
                 </div>
+
+                {{!-- Goals/Milestones create/edit/delete row --}}
+                <form class="row">
+                    {{!-- column of goal create/edit/delete options --}}
+                    <section class="col-7">
+                        {{#each userData.goals as |goal|}}
+                            {{>goal-row goal}}
+                        {{/each}}
+                    </section>
+
+                    {{!-- column of milestone create/edit/delete options --}}
+                    <section class="col-5">
+                        {{#each userData.goals as |goal|}}
+                            {{>milestones-div goal}}
+                        {{/each}}
+                    </section>
+                </form>
 
             </div>
 
