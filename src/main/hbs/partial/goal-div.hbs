@@ -11,7 +11,7 @@
                    type="checkbox"
                    {{#if accomplished}}checked{{/if}}
             />
-            <label class="form-check-label" for="goal-accomplished_{{id}}">Accomplished</label>
+            <label class="form-check-label" for="goalAccomplished_{{id}}">Accomplished</label>
         </div>
 
         {{!-- Private toggle switch --}}
@@ -23,7 +23,7 @@
                    role="switch"
                    {{#if private}}checked{{/if}}
             />
-            <label class="form-check-label" for="private-goal_{{id}}">Private</label>
+            <label class="form-check-label" for="goalPrivate_{{id}}">Private</label>
         </div>
 
         {{!-- Milestones toggle button --}}
@@ -31,7 +31,7 @@
     </div>
 
     {{!-- Goal title --}}
-    <label for="goal-title_{{id}}" class="form-label d-none">Goal Title</label>
+    <label for="goalTitle_{{id}}" class="form-label d-none">Goal Title</label>
     <input class="form-control"
            id="goalTitle_{{id}}"
            type="text"
