@@ -1,8 +1,10 @@
-import { titleInputUpdateBtnActivationDeactivationEventListener } from "./util/title-input-update-btn-activation-deactivation-event-listener.mjs";
+import { bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId } from "./util/bind-event-target-init-value-change-to-btn-active-status-via-goal-id.mjs";
+import { bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId } from "./util/bind-checkbox-event-target-init-value-change-to-btn-active-status-via-goal-id.mjs";
 
 const milestonesToggleButtons = document.getElementsByClassName("milestonesToggleBtn");
 const updateBtns = document.getElementsByClassName("updateBtn") as HTMLCollectionOf<HTMLButtonElement>;
-const titleInputs = document.getElementsByClassName("titleInput");
+const titleInputs = document.getElementsByClassName("titleInput") as HTMLCollectionOf<HTMLInputElement>;
+const accomplishedCheckboxes = document.getElementsByClassName("accomplishedCheckbox") as HTMLCollectionOf<HTMLInputElement>;
 
 for (let index = milestonesToggleButtons.length - 1; index >= 0; --index)
 {
@@ -42,7 +44,12 @@ for (let index = milestonesToggleButtons.length - 1; index >= 0; --index)
 for (let index = titleInputs.length - 1; index >= 0; --index)
 {
     const titleInput = titleInputs[index];
+    titleInput.addEventListener("keydown", (event) => bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId(event.target, updateBtns, titleInputs, accomplishedCheckboxes));
+    titleInput.addEventListener("keyup", (event) => bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId(event.target, updateBtns, titleInputs, accomplishedCheckboxes));
+}
 
-    titleInput.addEventListener("keydown", (event) => titleInputUpdateBtnActivationDeactivationEventListener(event, updateBtns));
-    titleInput.addEventListener("keyup", (event) => titleInputUpdateBtnActivationDeactivationEventListener(event, updateBtns));
+for (let index = accomplishedCheckboxes.length - 1; index >= 0; --index)
+{
+    const accomplishedCheckbox = accomplishedCheckboxes[index];
+    accomplishedCheckbox.addEventListener("change", (event) => bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId(event.target, updateBtns));
 }

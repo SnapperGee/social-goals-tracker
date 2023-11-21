@@ -1,12 +1,15 @@
-export const bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId = (eventTarget: EventTarget | null, buttons: HTMLCollectionOf<HTMLButtonElement>): void =>
+import { TitleInput } from "./goals-manager/title-input.mjs";
+import { AccomplishedCheckbox } from "./goals-manager/accomplished-checkbox.mjs";
+
+export const bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId = (eventTarget: EventTarget | null, updateButtons: HTMLCollectionOf<HTMLButtonElement>, titleInputs: HTMLCollectionOf<HTMLInputElement>, checkBoxes: HTMLCollectionOf<HTMLInputElement>): void =>
 {
     if (eventTarget instanceof HTMLInputElement)
     {
         if (eventTarget.value !== eventTarget.dataset.initValue)
         {
-            for (let index = buttons.length - 1; index >= 0; --index)
+            for (let index = updateButtons.length - 1; index >= 0; --index)
             {
-                const updateBtn = buttons[index];
+                const updateBtn = updateButtons[index];
 
                 if (updateBtn.dataset.goalId === eventTarget.dataset.goalId)
                 {
@@ -21,17 +24,49 @@ export const bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId = (eventTa
         }
         else
         {
-            for (let index = buttons.length - 1; index >= 0; --index)
+            let changesPresent = false;
+
+            for (let index = titleInputs.length - 1; index >= 0; --index)
             {
-                const updateBtn = buttons[index];
+                const titleInput = new TitleInput(titleInputs[index]);
 
-                if (updateBtn.dataset.goalId === eventTarget.dataset.goalId)
+                if (  eventTarget.dataset.goalId === titleInput.goalId
+                      && titleInput.valueIsChanged() )
                 {
-                    updateBtn.disabled = true;
+                    changesPresent = true;
+                    break;
+                }
+            }
 
-                    if (updateBtn.classList.contains("btn-primary"))
+            if ( ! changesPresent)
+            {
+                for (let index = checkBoxes.length - 1; index >= 0; --index)
+                {
+                    const checkBox = new AccomplishedCheckbox(checkBoxes[index]);
+
+                    if (    eventTarget.dataset.goalId === checkBox.goalId
+                         && checkBox.valueIsChanged() )
                     {
-                        updateBtn.classList.replace("btn-primary", "btn-secondary");
+                        changesPresent = true;
+                        break;
+                    }
+                }
+            }
+
+            if ( ! changesPresent)
+            {
+                for (let index = updateButtons.length - 1; index >= 0; --index)
+                {
+                    const updateBtn = updateButtons[index];
+
+                    if (updateBtn.dataset.goalId === eventTarget.dataset.goalId)
+                    {
+                        updateBtn.disabled = true;
+
+                        if (updateBtn.classList.contains("btn-primary"))
+                        {
+                            updateBtn.classList.replace("btn-primary", "btn-secondary");
+                        }
                     }
                 }
             }
