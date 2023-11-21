@@ -3,86 +3,74 @@
     <script src="/goals-manager.mjs" type="module"></script>
 {{/section}}
 
-<h1>Goals Manager</h1>
+<h1 class="text-center text-decoration-underline">Goals Manager</h1>
 
 <div class="container-fluid">
+
+    {{!-- root row --}}
     <div class="row">
 
         <nav class="col-1 bg-primary" id="navBarCol">
             <p>Navbar</p>
         </nav>
 
-        <div class="col" id="goalsAndMilestoneCol">
+        <main class="col" id="goalsAndMilestoneCol">
 
-            <div class="row" id="goalRow">
-
-                <div class="col-1 my-auto">
-                    <button class="btn btn-primary shadow mb-3" type="button">Add Goal</button>
-                </div>
+            {{!-- Goals row --}}
+            <div class="row align-items-center" id="goalsRow">
 
                 <div class="col" id="goalsCol">
-                    <form>
 
-                        <div class="row">
-                            <div class="col-1">
-                                <button class="btn btn-secondary shadow mb-3" type="submit" disabled>Update</button>
-                                <button type="button" class="btn btn-primary active" id="mileStonesToggle" data-bs-toggle="button" aria-pressed="true">Milestones</button>
-                            </div>
+                        <div class="row align-items-center">
 
-                            <div class="col-4">
-                                <label for="goalTitle" class="form-label">Title</label>
-                                <input type="text" class="form-control" id="goalTitle" placeholder="Goal Title">
-                            </div>
+                            <div class="row">
 
-                            <div class="col">
-                                <label for="goalDescription" class="form-label">Description</label>
-                                <input type="text" class="form-control" id="goalDescription" placeholder="Goal Description">
-                            </div>
+                                <div class="col offset-1">
+                                    <div class="d-flex justify-content-around align-items-center">
+                                        <h2 class="h2">Goals:</h2>
+                                        <button class="btn btn-primary btn-lg shadow mb-2" id="addGoalBtn" type="button">Add</button>
+                                    </div>
+                                </div>
 
-                            <div class="col-1 my-auto">
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                                    <label class="form-check-label" for="flexSwitchCheckDefault">Private</label>
+                                <div class="col">
+                                    <div class="d-flex justify-content-around align-items-center">
+                                        <h2 class="h2">Milestones:</h2>
+                                        <button class="btn btn-primary btn-lg shadow mb-2" type="button">Add</button>
+                                    </div>
                                 </div>
 
                             </div>
-                        </div>
 
-                    </form>
-                </div>
+                            {{!-- Goals/Milestones row --}}
+                            <form class="row align-items-center">
 
-            </div>
+                                {{!-- Update btn col --}}
+                                <div class="col-1 text-center">
+                                    <button class="btn btn-secondary shadow mb-1" type="submit" disabled>Update</button>
+                                    <button class="btn btn-danger btn-sm shadow mt-1" type="button">Delete</button>
+                                </div>
 
-            <div class="row" id="milestonesRow">
+                                {{!-- Goals col --}}
+                                <section class="col-6">
+                                    {{#each userData.goals as |goal|}}
+                                        {{>goal-div goal}}
+                                    {{/each}}
+                                </section>
 
-                <div class="col-1 my-auto">
-                    <button class="btn btn-primary shadow mb-3" type="button">Add Milestone</button>
-                </div>
+                                {{!-- Milestone col --}}
+                                <section class="col-5 text-center">
+                                    {{>milestone-div userData.goals.[0].milestones}}
+                                </section>
 
-                <div class="col" id="milestonesCol">
-
-                    <div class="row">
-
-                        <div class="col-1">
-                            <button class="btn btn-secondary shadow mb-3" type="submit" disabled>Update</button>
-                        </div>
-
-                        <div class="col bg-info">
-                            <p>Milestone 1 Title</p>
-                        </div>
-
-                        <div class="col bg-secondary">
-                            <p>Milestone 1 Description</p>
+                            </form>
 
                         </div>
-
-                    </div>
 
                 </div>
 
             </div>
 
-        </div>
+        </main>
 
     </div>
 </div>
