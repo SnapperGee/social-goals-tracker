@@ -1,0 +1,71 @@
+/*
+ * If you need to overwrite Bootstrap variables, use "@import" instead of "@use".
+ *
+ * Ideally, instead of importing all of bootstrap, you should only import the
+ * sass partials that you need.
+ */
+ @use "default";
+
+ body {
+     display: flex;
+     flex-direction: column;
+     background: linear-gradient(
+         to bottom right,
+         #ff00ff,
+         #00ffff,
+         #ffcc00,
+         #00ff00
+     ) fixed;
+     background-size: 400% 400%;
+     animation: gradientShift 10s linear infinite;
+     min-height: 100vh; /* Ensures the body takes at least the full height of the viewport */
+ }
+ 
+ .main-container {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding: 20px;
+     text-align: center;
+     color: white;
+ }
+ 
+ .columns-container {
+     margin-top: 10%;
+     display: flex;
+     justify-content: space-around; /* Adjust as needed */
+ }
+   
+   
+   form {
+     display: flex;
+     flex-direction: column;
+   }
+   
+   label {
+     margin-bottom: 8px;
+   }
+   
+   input {
+     margin-bottom: 16px;
+     padding: 8px;
+   }
+   
+   input[type="submit"] {
+     cursor: pointer;
+   }
+   
+   @keyframes gradientShift {
+     0%, 100% {
+       background-position: 0% 50%;
+   }
+   25% {
+       background-position: 100% 50%;
+   }
+   50% {
+       background-position: 0% 100%;
+   }
+   75% {
+       background-position: 0% 0%;
+   }
+   }

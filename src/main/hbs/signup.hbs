@@ -1,0 +1,34 @@
+{{#section "head"}}
+    <link href="login.css" rel="stylesheet" />
+    <script src="login.mjs" type="module"></script>
+{{/section}}
+
+<div class="main-container">
+<h1 style="color:#e827b5">Social Goals Tracker</h1>
+</div>
+<div class="columns-container">
+    <div class=".col-4">
+        <h2>Create a New Account</h2>
+
+        <form action="/signup" method="post">
+            <label for="username">Enter Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Enter Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <input class="btn btn-primary shadow mb-3" type="submit" value="Sign Up">
+        </form>
+         <p>Login to Account <a href="/">Log In</a></p>
+    </div>
+
+
+    <div class=".col-4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" fill="black"/>
+            <g transform="translate(-28, 12)">
+            <path fill="#e827b5" d="M52.8,29.082l12.818,0l0-2.584l-12.818,0q-2.516,0-4.216,1.972q-1.734,2.006-1.734,4.862q0,2.584,1.734,4.488q1.7,1.938,4.216,1.938l3.4,0l3.468,0q1.53,0,2.72,1.292q1.122,1.36,1.122,2.958q0,1.904-1.105,3.094t-2.737,1.19l-12.818,0l0,2.108l12.818,0q2.55,0,4.25-1.768t1.7-4.624q0-2.584-1.7-4.488q-1.734-1.904-4.25-1.904l-3.468,0l-3.4,0q-1.564,0-2.686-1.36q-1.156-1.258-1.156-2.924q0-1.904,1.105-3.077t2.737-1.173z M82.06856,28.64l6.562,0l0-2.142l-6.562,0q-4.896,0-8.296,3.468q-3.434,3.502-3.434,8.738q0,4.862,3.434,8.296t8.296,3.434l4.352,0l2.21,0l0-2.176l0-10.88l-2.21,0l-5.202,0l0,2.176l5.202,0l0,8.704l-4.352,0q-3.876,0-6.698-2.822t-2.822-6.732q0-4.25,2.822-7.174q2.788-2.89,6.698-2.89z M111.33712,26.6l-18.428,0l0,2.074l8.364,0l0,21.794l2.108,0l0-21.794l7.956,0l0-2.074z"/><path fill="#d631b5" d=""/>
+            </g>
+        </svg>
+    </div>
+</div>
