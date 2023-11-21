@@ -7,13 +7,15 @@
                    data-init-value="{{accomplished}}"
                    {{#if accomplished}}checked{{/if}}
             />
-            <label class="form-check-label" for="milestone-accomplished_{{id}}">Accomplished</label>
+            <label class="form-check-label" for="milestoneAccomplished_{{id}}">Accomplished</label>
         </div>
 
-        <button class="btn btn-danger btn-sm shadow" type="button">Delete</button>
+        <button class="btn btn-danger btn-sm shadow"
+                type="button"
+        >Delete</button>
     </div>
 
-    <label for="milestone-title_{{id}}" class="form-label d-none">Milestone Title</label>
+    <label for="milestoneTitle_{{id}}" class="form-label d-none">Milestone Title</label>
     <input class="form-control"
            id="milestoneTitle_{{id}}"
            value="{{title}}"
