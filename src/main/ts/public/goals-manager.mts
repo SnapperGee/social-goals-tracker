@@ -13,21 +13,24 @@ for (let index = milestoneButtons.length - 1; index >= 0; --index)
             if (clickedBtn.classList.contains("active"))
             {
                 clickedBtn.classList.remove("active");
+                clickedBtn.ariaPressed = "false";
             }
             else
             {
                 clickedBtn.classList.add("active");
-                for (let index = milestoneButtons.length - 1; index >= 0; --index)
+                clickedBtn.ariaPressed = "true";
+
+                for (let i = milestoneButtons.length - 1; i >= 0; --i)
                 {
-                    const btn = milestoneButtons[index];
+                    const btn = milestoneButtons[i];
+
                     if (btn !== clickedBtn)
                     {
                         btn.classList.remove("active");
+                        clickedBtn.ariaPressed = "false";
                     }
                 }
             }
-
-            clickedBtn.ariaPressed = clickedBtn.ariaPressed === "true" ? "false" : "true";
         }
     });
 }
