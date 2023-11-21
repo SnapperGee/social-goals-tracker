@@ -7,19 +7,25 @@ export const getProfileData = async (req: Request, res: Response): Promise<void>
         const { userId } = req.params;
         const profileData = await prismaClient.user.findUnique({ 
             where: { id: userId },
-            select: {
-                name: true
-            },
+            select: { name: true},
             include: {
-                goal: {
+                goals: {
                     select: { title: true,
-                             private: true },
-                    include: { milestone: true }
+                              complete: true,
+                              private: true },
                 }
             }
         });
+        res.render("profile", { title: "Profile", profileData });
+        console.log(profileData);
     }
     catch (error)
     {
         res.status(500).json(error);
     }}
+
+    export const profileController = Object.freeze({
+        getProfileData
+    });
+    
+    export default profileController;
