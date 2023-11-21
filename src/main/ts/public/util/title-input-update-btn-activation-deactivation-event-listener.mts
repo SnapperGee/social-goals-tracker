@@ -1,4 +1,4 @@
-export const btnDynamicActivationDeactivation = (event: Event, buttons: HTMLCollectionOf<HTMLButtonElement>): void =>
+export const titleInputUpdateBtnActivationDeactivationEventListener = (event: Event, buttons: HTMLCollectionOf<HTMLButtonElement>): void =>
 {
     const inputReceiver = event.target;
 
@@ -41,4 +41,4 @@ export const btnDynamicActivationDeactivation = (event: Event, buttons: HTMLColl
     }
 };
 
-export default btnDynamicActivationDeactivation;
+export default titleInputUpdateBtnActivationDeactivationEventListener;

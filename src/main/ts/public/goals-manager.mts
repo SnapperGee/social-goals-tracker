@@ -1,4 +1,4 @@
-import { btnDynamicActivationDeactivation } from "./util/btn-dynamic-activation-deactivation.mjs";
+import { titleInputUpdateBtnActivationDeactivationEventListener } from "./util/title-input-update-btn-activation-deactivation-event-listener.mjs";
 
 const milestonesToggleButtons = document.getElementsByClassName("milestonesToggleBtn");
 const updateBtns = document.getElementsByClassName("updateBtn") as HTMLCollectionOf<HTMLButtonElement>;
@@ -43,6 +43,6 @@ for (let index = titleInputs.length - 1; index >= 0; --index)
 {
     const titleInput = titleInputs[index];
 
-    titleInput.addEventListener("keydown", (event) => btnDynamicActivationDeactivation(event, updateBtns));
-    titleInput.addEventListener("keyup", (event) => btnDynamicActivationDeactivation(event, updateBtns));
+    titleInput.addEventListener("keydown", (event) => titleInputUpdateBtnActivationDeactivationEventListener(event, updateBtns));
+    titleInput.addEventListener("keyup", (event) => titleInputUpdateBtnActivationDeactivationEventListener(event, updateBtns));
 }
