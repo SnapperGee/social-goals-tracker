@@ -42,23 +42,17 @@
                             </div>
 
                             {{!-- Goals/Milestones row --}}
-                            <form class="row align-items-center">
+                            <form class="row">
 
-                                {{!-- Update btn col --}}
-                                <div class="col-1 text-center">
-                                    <button class="btn btn-secondary shadow mb-1" type="submit" disabled>Update</button>
-                                    <button class="btn btn-danger btn-sm shadow mt-1" type="button">Delete</button>
-                                </div>
-
-                                {{!-- Goals col --}}
-                                <section class="col-6">
+                                {{!-- column of goals "rows" (flexboxes) --}}
+                                <section class="col-7">
                                     {{#each userData.goals as |goal|}}
-                                        {{>goal-div goal}}
+                                        {{>goal-row goal}}
                                     {{/each}}
                                 </section>
 
                                 {{!-- Milestone col --}}
-                                <section class="col-5 text-center">
+                                <section class="col-5">
                                     {{#each userData.goals as |goal|}}
                                         {{>milestones-div goal}}
                                     {{/each}}
