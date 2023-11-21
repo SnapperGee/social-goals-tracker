@@ -1,4 +1,4 @@
-const milestoneButtons = document.querySelectorAll(".milestonesBtn");
+const milestoneButtons = document.getElementsByClassName("milestonesBtn");
 
 for (let index = milestoneButtons.length - 1; index >= 0; --index)
 {
