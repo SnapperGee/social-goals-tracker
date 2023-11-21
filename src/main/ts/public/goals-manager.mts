@@ -27,7 +27,7 @@ for (let index = milestoneButtons.length - 1; index >= 0; --index)
                     if (btn !== clickedBtn)
                     {
                         btn.classList.remove("active");
-                        clickedBtn.ariaPressed = "false";
+                        btn.ariaPressed = "false";
                     }
                 }
             }
