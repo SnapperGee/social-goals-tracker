@@ -1,7 +1,12 @@
 <li class="list-group-item">
     <div class="d-flex px-4 mb-2 justify-content-between">
         <div>
-            <input class="form-check-input me-1" type="checkbox" id="milestone-accomplished_{{id}}" {{#if accomplished}}checked{{/if}}>
+            <input class="form-check-input me-1"
+                   id="milestone-accomplished_{{id}}"
+                   type="checkbox"
+                   data-init-value="{{accomplished}}"
+                   {{#if accomplished}}checked{{/if}}
+            />
             <label class="form-check-label" for="milestone-accomplished_{{id}}">Accomplished</label>
         </div>
 
@@ -9,5 +14,11 @@
     </div>
 
     <label for="milestone-title_{{id}}" class="form-label d-none">Milestone Title</label>
-    <input type="text" class="form-control" id="milestone-title_{{id}}" placeholder="Milestone" value="{{title}}">
+    <input class="form-control"
+           id="milestone-title_{{id}}"
+           value="{{title}}"
+           data-init-value="{{title}}"
+           placeholder="Milestone"
+           type="text"
+    />
 </li>
