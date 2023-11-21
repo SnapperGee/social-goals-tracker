@@ -7,6 +7,8 @@
         <div>
             <input class="form-check-input me-1"
                    id="goalAccomplished_{{id}}"
+                   name="goalIsAccomplished"
+                   value="true"
                    data-init-value="{{accomplished}}"
                    type="checkbox"
                    {{#if accomplished}}checked{{/if}}
@@ -18,6 +20,8 @@
         <div class="form-check form-switch">
             <input class="form-check-input"
                    id="goalPrivate_{{id}}"
+                   name="goalIsPrivate"
+                   value="true"
                    data-init-value="{{private}}"
                    type="checkbox"
                    role="switch"
