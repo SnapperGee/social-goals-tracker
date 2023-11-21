@@ -1,10 +1,10 @@
-const milestoneButtons = document.getElementsByClassName("milestonesBtn");
+const milestonesToggleButtons = document.getElementsByClassName("milestonesToggleBtn");
 
-for (let index = milestoneButtons.length - 1; index >= 0; --index)
+for (let index = milestonesToggleButtons.length - 1; index >= 0; --index)
 {
-    const milestoneBtn = milestoneButtons[index];
+    const milestonesToggleBtn = milestonesToggleButtons[index];
 
-    milestoneBtn.addEventListener("click", (event) =>
+    milestonesToggleBtn.addEventListener("click", (event) =>
     {
         const clickedBtn = event.target;
 
@@ -20,14 +20,14 @@ for (let index = milestoneButtons.length - 1; index >= 0; --index)
                 clickedBtn.classList.add("active");
                 clickedBtn.ariaPressed = "true";
 
-                for (let i = milestoneButtons.length - 1; i >= 0; --i)
+                for (let i = milestonesToggleButtons.length - 1; i >= 0; --i)
                 {
-                    const btn = milestoneButtons[i];
+                    const toggleBtn = milestonesToggleButtons[i];
 
-                    if (btn !== clickedBtn)
+                    if (toggleBtn !== clickedBtn)
                     {
-                        btn.classList.remove("active");
-                        btn.ariaPressed = "false";
+                        toggleBtn.classList.remove("active");
+                        toggleBtn.ariaPressed = "false";
                     }
                 }
             }
