@@ -1,22 +1,25 @@
-console.log("Manage dem goals");
+const milestoneButtons = document.querySelectorAll(".milestonesBtn");
 
-const milestonesBtn = document.getElementById("milestonesToggle");
-
-milestonesBtn?.addEventListener("click", (event) =>
+for (let index = milestoneButtons.length - 1; index >= 0; --index)
 {
-    const clickedBtn = event.target;
+    const milestoneBtn = milestoneButtons[index];
 
-    if (clickedBtn instanceof HTMLButtonElement)
+    milestoneBtn.addEventListener("click", (event) =>
     {
-        if (clickedBtn.classList.contains("active"))
-        {
-            clickedBtn.classList.remove("active");
-        }
-        else
-        {
-            clickedBtn.classList.add("active");
-        }
+        const clickedBtn = event.target;
 
-        clickedBtn.ariaPressed = clickedBtn.ariaPressed === "true" ? "false" : "true";
-    }
-});
+        if (clickedBtn instanceof HTMLButtonElement)
+        {
+            if (clickedBtn.classList.contains("active"))
+            {
+                clickedBtn.classList.remove("active");
+            }
+            else
+            {
+                clickedBtn.classList.add("active");
+            }
+
+            clickedBtn.ariaPressed = clickedBtn.ariaPressed === "true" ? "false" : "true";
+        }
+    });
+}
