@@ -5,6 +5,8 @@
                    id="milestoneAccomplished_{{id}}"
                    type="checkbox"
                    data-init-value="{{accomplished}}"
+                   name="milestoneIsAccomplished"
+                   value="true"
                    {{#if accomplished}}checked{{/if}}
             />
             <label class="form-check-label" for="milestoneAccomplished_{{id}}">Accomplished</label>
@@ -20,6 +22,7 @@
     <label for="milestoneTitle_{{id}}" class="form-label d-none">Milestone Title</label>
     <input class="form-control"
            id="milestoneTitle_{{id}}"
+           name="milestoneTitle"
            value="{{title}}"
            data-init-value="{{title}}"
            placeholder="Milestone"
