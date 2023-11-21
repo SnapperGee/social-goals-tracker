@@ -10,6 +10,7 @@
                    name="goalIsAccomplished"
                    value="true"
                    data-init-value="{{accomplished}}"
+                   data-goal-id="{{id}}"
                    type="checkbox"
                    {{#if accomplished}}checked{{/if}}
             />
@@ -23,6 +24,7 @@
                    name="goalIsPrivate"
                    value="true"
                    data-init-value="{{private}}"
+                   data-goal-id="{{id}}"
                    type="checkbox"
                    role="switch"
                    {{#if private}}checked{{/if}}
@@ -45,7 +47,8 @@
            id="goalTitle_{{id}}"
            type="text"
            placeholder="Goal"
-           data-init-value="{{title}}"
            value="{{title}}"
+           data-init-value="{{title}}"
+           data-goal-id="{{id}}"
     />
 </div>
