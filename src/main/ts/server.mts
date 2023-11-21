@@ -17,7 +17,7 @@ const sessionConfig = {
     resave: false,
     saveUninitialized: false,
     cookie: { secure: false },
-    age: 1000 * 60 * 60 * 24 
+    age: 1000 * 60 * 60 * 24
 };
 
 const hbs = exphbs.create({
