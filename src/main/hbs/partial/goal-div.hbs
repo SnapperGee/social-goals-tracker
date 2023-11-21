@@ -5,7 +5,7 @@
 
         {{!-- Accomplished checkbox --}}
         <div>
-            <input class="form-check-input me-1"
+            <input class="form-check-input me-1 goalAccomplishedCheckbox"
                    id="goalAccomplished_{{id}}"
                    name="goalIsAccomplished"
                    value="true"
@@ -18,7 +18,7 @@
         </div>
 
         {{!-- Private toggle switch --}}
-        <div class="form-check form-switch">
+        <div class="form-check form-switch goalPrivacyToggle">
             <input class="form-check-input"
                    id="goalPrivate_{{id}}"
                    name="goalIsPrivate"
@@ -42,7 +42,7 @@
     </div>
 
     {{!-- Goal title --}}
-    <label for="goalTitle_{{id}}" class="form-label d-none">Goal Title</label>
+    <label for="goalTitle_{{id}}" class="form-label d-none goalTitle">Goal Title</label>
     <input class="form-control"
            id="goalTitle_{{id}}"
            type="text"
