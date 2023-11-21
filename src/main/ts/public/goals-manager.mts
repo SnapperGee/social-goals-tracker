@@ -51,5 +51,5 @@ for (let index = titleInputs.length - 1; index >= 0; --index)
 for (let index = accomplishedCheckboxes.length - 1; index >= 0; --index)
 {
     const accomplishedCheckbox = accomplishedCheckboxes[index];
-    accomplishedCheckbox.addEventListener("change", (event) => bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId(event.target, updateBtns));
+    accomplishedCheckbox.addEventListener("change", (event) => bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId(event.target, updateBtns, titleInputs, accomplishedCheckboxes));
 }
