@@ -6,8 +6,8 @@ export const goals = Object.freeze(users.map((user, index) =>
     Object.freeze({
         id: randomUUID(),
         title: `${user.name}'s Goal Title`,
-        complete: Math.random() < 0.5,
-        private: index % 3 === 0,
+        accomplished: Math.random() < 0.5,
+        private: Math.random() < 0.5,
         user_id: user.id
     })
 ));

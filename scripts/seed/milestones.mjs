@@ -6,7 +6,7 @@ export const milestones = Object.freeze(goals.map((goal, index) =>
     Object.freeze({
         id: randomUUID(),
         title: `${goal.title} Milestone Title`,
-        complete: Math.random() < 0.5,
+        accomplished: Math.random() < 0.5,
         goal_id: goal.id
     })
 ));
