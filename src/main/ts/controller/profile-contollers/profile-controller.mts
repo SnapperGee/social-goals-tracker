@@ -12,7 +12,7 @@ export const getProfileData = async (req: Request, res: Response): Promise<void>
                 goals: {
                     select: { title: true,
                               complete: true,
-                              private: true },
+                              private: true, },
                 }
             }
         });
