@@ -23,6 +23,7 @@ model goal {
   id         String      @id @default(dbgenerated("(uuid())")) @db.Char(36)
   title      String      @db.Char(255)
   private    Boolean     @default(false)
+  complete   Boolean     @default(false)
   user_id    String      @db.Char(36)
   user       user        @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "user_id_fk")
   milestones milestone[]
@@ -31,10 +32,11 @@ model goal {
 }
 
 model milestone {
-  id      String @id @default(dbgenerated("(uuid())")) @db.Char(36)
-  title   String @db.Char(255)
-  goal_id String @db.Char(36)
-  goal    goal   @relation(fields: [goal_id], references: [id], onDelete: Cascade, map: "goal_id_fk")
+  id       String  @id @default(dbgenerated("(uuid())")) @db.Char(36)
+  title    String  @db.Char(255)
+  complete Boolean @default(false)
+  goal_id  String  @db.Char(36)
+  goal     goal    @relation(fields: [goal_id], references: [id], onDelete: Cascade, map: "goal_id_fk")
 
   @@index([goal_id], map: "goal_id_fk")
 }
