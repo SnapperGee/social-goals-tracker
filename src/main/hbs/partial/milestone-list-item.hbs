@@ -5,6 +5,7 @@
                    id="milestoneAccomplished_{{id}}"
                    type="checkbox"
                    data-init-value="{{accomplished}}"
+                   data-goal-id="{{goal_id}}"
                    name="milestoneIsAccomplished"
                    value="true"
                    {{#if accomplished}}checked{{/if}}
@@ -25,6 +26,7 @@
            name="milestoneTitle"
            value="{{title}}"
            data-init-value="{{title}}"
+           data-goal-id="{{goal_id}}"
            placeholder="Milestone"
            type="text"
     />
