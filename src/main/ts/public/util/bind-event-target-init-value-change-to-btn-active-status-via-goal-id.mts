@@ -1,16 +1,14 @@
-export const titleInputUpdateBtnActivationDeactivationEventListener = (event: Event, buttons: HTMLCollectionOf<HTMLButtonElement>): void =>
+export const bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId = (eventTarget: EventTarget | null, buttons: HTMLCollectionOf<HTMLButtonElement>): void =>
 {
-    const inputReceiver = event.target;
-
-    if (inputReceiver instanceof HTMLInputElement)
+    if (eventTarget instanceof HTMLInputElement)
     {
-        if (inputReceiver.value !== inputReceiver.dataset.initValue)
+        if (eventTarget.value !== eventTarget.dataset.initValue)
         {
             for (let index = buttons.length - 1; index >= 0; --index)
             {
                 const updateBtn = buttons[index];
 
-                if (updateBtn.dataset.goalId === inputReceiver.dataset.goalId)
+                if (updateBtn.dataset.goalId === eventTarget.dataset.goalId)
                 {
                     updateBtn.disabled = false;
 
@@ -27,7 +25,7 @@ export const titleInputUpdateBtnActivationDeactivationEventListener = (event: Ev
             {
                 const updateBtn = buttons[index];
 
-                if (updateBtn.dataset.goalId === inputReceiver.dataset.goalId)
+                if (updateBtn.dataset.goalId === eventTarget.dataset.goalId)
                 {
                     updateBtn.disabled = true;
 
@@ -41,4 +39,4 @@ export const titleInputUpdateBtnActivationDeactivationEventListener = (event: Ev
     }
 };
 
-export default titleInputUpdateBtnActivationDeactivationEventListener;
+export default bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId;
