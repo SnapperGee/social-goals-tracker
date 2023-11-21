@@ -40,3 +40,5 @@ export const btnDynamicActivationDeactivation = (event: Event, buttons: HTMLColl
         }
     }
 };
+
+export default btnDynamicActivationDeactivation;
