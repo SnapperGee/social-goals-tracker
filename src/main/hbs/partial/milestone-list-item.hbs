@@ -1,0 +1,13 @@
+<li class="list-group-item">
+    <div class="d-flex px-4 mb-2 justify-content-between">
+        <div>
+            <input class="form-check-input me-1" type="checkbox" id="milestone-accomplished_{{id}}" {{#if accomplished}}checked{{/if}}>
+            <label class="form-check-label" for="milestone-accomplished_{{id}}">Accomplished</label>
+        </div>
+
+        <button class="btn btn-danger btn-sm shadow" type="button">Delete</button>
+    </div>
+
+    <label for="milestone-title_{{id}}" class="form-label d-none">Milestone Title</label>
+    <input type="text" class="form-control" id="milestone-title_{{id}}" placeholder="Milestone" value="{{title}}">
+</li>

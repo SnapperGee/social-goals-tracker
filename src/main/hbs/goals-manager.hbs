@@ -59,7 +59,11 @@
 
                                 {{!-- Milestone col --}}
                                 <section class="col-5 text-center">
-                                    {{>milestone-div userData.goals.[0].milestones}}
+                                    <ol class="list-group">
+                                        {{#each userData.goals as |goal|}}
+                                            {{>milestones-list goal}}
+                                        {{/each}}
+                                    </ol>
                                 </section>
 
                             </form>
