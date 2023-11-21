@@ -6,7 +6,7 @@
         {{!-- Accomplished checkbox --}}
         <div>
             <input class="form-check-input me-1"
-                   id="goal-accomplished_{{id}}"
+                   id="goalAccomplished_{{id}}"
                    data-init-value="{{accomplished}}"
                    type="checkbox"
                    {{#if accomplished}}checked{{/if}}
@@ -17,7 +17,7 @@
         {{!-- Private toggle switch --}}
         <div class="form-check form-switch">
             <input class="form-check-input"
-                   id="goal-private_{{id}}"
+                   id="goalPrivate_{{id}}"
                    data-init-value="{{private}}"
                    type="checkbox"
                    role="switch"
@@ -33,7 +33,7 @@
     {{!-- Goal title --}}
     <label for="goal-title_{{id}}" class="form-label d-none">Goal Title</label>
     <input class="form-control"
-           id="goal-title_{{id}}"
+           id="goalTitle_{{id}}"
            type="text"
            placeholder="Goal"
            data-init-value="{{title}}"
