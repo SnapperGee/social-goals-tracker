@@ -1,19 +1,42 @@
 <div class="border border-secondary-subtle border-2 rounded-3 p-3">
-    {{!-- Goal toggles/buttons --}}
+
+    {{!-- Goal controls --}}
     <div class="d-flex justify-content-around align-items-center mb-2">
+
+        {{!-- Accomplished checkbox --}}
         <div>
-            <input class="form-check-input me-1" type="checkbox" id="goal-accomplished_{{id}}" {{#if accomplished}}checked{{/if}}>
+            <input class="form-check-input me-1"
+                   id="goal-accomplished_{{id}}"
+                   data-init-value="{{accomplished}}"
+                   type="checkbox"
+                   {{#if accomplished}}checked{{/if}}
+            />
             <label class="form-check-label" for="goal-accomplished_{{id}}">Accomplished</label>
         </div>
 
+        {{!-- Private toggle switch --}}
         <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="goal-private_{{id}}" {{#if private}}checked{{/if}}>
+            <input class="form-check-input"
+                   id="goal-private_{{id}}"
+                   data-init-value="{{private}}"
+                   type="checkbox"
+                   role="switch"
+                   {{#if private}}checked{{/if}}
+            />
             <label class="form-check-label" for="private-goal_{{id}}">Private</label>
         </div>
 
+        {{!-- Milestones toggle button --}}
         <button type="button" class="btn btn-outline-primary btn-sm milestonesBtn" id="goal-milestones_{{id}}" data-bs-toggle="button" aria-pressed="true">Milestones</button>
     </div>
 
+    {{!-- Goal title --}}
     <label for="goal-title_{{id}}" class="form-label d-none">Goal Title</label>
-    <input type="text" class="form-control" id="goal-title_{{id}}" placeholder="Goal" value="{{title}}">
+    <input class="form-control"
+           id="goal-title_{{id}}"
+           type="text"
+           placeholder="Goal"
+           data-init-value="{{title}}"
+           value="{{title}}"
+    />
 </div>
