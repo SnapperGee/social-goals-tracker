@@ -1,7 +1,11 @@
 import { titleInputValueIsChanged } from "./goals-manager/title-input-value-is-changed.mjs";
-import { checkBoxValueIsChanged } from "./goals-manager/checkbox-value-is-changed.mjs";
+import { checkboxValueIsChanged } from "./goals-manager/checkbox-value-is-changed.mjs";
 
-export const bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId = (eventTarget: EventTarget | null, updateButtons: HTMLCollectionOf<HTMLButtonElement>, titleInputs: HTMLCollectionOf<HTMLInputElement>, checkBoxes: HTMLCollectionOf<HTMLInputElement>): void =>
+export const bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId = (
+    eventTarget: EventTarget | null,
+    updateButtons: HTMLCollectionOf<HTMLButtonElement>,
+    titleInputs: HTMLCollectionOf<HTMLInputElement>,
+    accomplishedCheckBoxes: HTMLCollectionOf<HTMLInputElement> ): void =>
 {
     if (eventTarget instanceof HTMLInputElement)
     {
@@ -40,12 +44,12 @@ export const bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId = (eventTa
 
             if ( ! changesPresent)
             {
-                for (let index = checkBoxes.length - 1; index >= 0; --index)
+                for (let index = accomplishedCheckBoxes.length - 1; index >= 0; --index)
                 {
-                    const checkBox = checkBoxes[index];
+                    const accomplishedCheckBox = accomplishedCheckBoxes[index];
 
-                    if ( eventTarget.dataset.goalId === checkBox.dataset.goalId
-                         && checkBoxValueIsChanged(checkBox) )
+                    if ( eventTarget.dataset.goalId === accomplishedCheckBox.dataset.goalId
+                         && checkboxValueIsChanged(accomplishedCheckBox) )
                     {
                         changesPresent = true;
                         break;
