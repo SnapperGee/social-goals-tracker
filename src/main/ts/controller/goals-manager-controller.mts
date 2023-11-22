@@ -22,8 +22,13 @@ export const getGoalsOfUserWithId = async (req: Request, res: Response): Promise
     }
 };
 
+export const putGoalsOfUserWithId = async (req: Request, res: Response): Promise<void> =>
+{
+    console.log(`${req.params.userId}\n\n${req.body}`);
+};
+
 export const goalsManagerController = Object.freeze({
-    getGoalsOfUserWithId
+    getGoalsOfUserWithId, putGoalsOfUserWithId
 });
 
 export default goalsManagerController;
