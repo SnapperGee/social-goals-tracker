@@ -5,6 +5,7 @@ const milestonesToggleButtons = document.getElementsByClassName("milestonesToggl
 const updateBtns = document.getElementsByClassName("updateBtn") as HTMLCollectionOf<HTMLButtonElement>;
 const titleInputs = document.getElementsByClassName("titleInput") as HTMLCollectionOf<HTMLInputElement>;
 const accomplishedCheckboxes = document.getElementsByClassName("accomplishedCheckbox") as HTMLCollectionOf<HTMLInputElement>;
+const goalPrivacyCheckboxes = document.getElementsByClassName("goalPrivacyToggle") as HTMLCollectionOf<HTMLInputElement>;
 
 for (let index = milestonesToggleButtons.length - 1; index >= 0; --index)
 {
@@ -44,12 +45,18 @@ for (let index = milestonesToggleButtons.length - 1; index >= 0; --index)
 for (let index = titleInputs.length - 1; index >= 0; --index)
 {
     const titleInput = titleInputs[index];
-    titleInput.addEventListener("keydown", (event) => bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId(event.target, updateBtns, titleInputs, accomplishedCheckboxes));
-    titleInput.addEventListener("keyup", (event) => bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId(event.target, updateBtns, titleInputs, accomplishedCheckboxes));
+    titleInput.addEventListener("keydown", (event) => bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId(event.target, updateBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
+    titleInput.addEventListener("keyup", (event) => bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId(event.target, updateBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
 }
 
 for (let index = accomplishedCheckboxes.length - 1; index >= 0; --index)
 {
     const accomplishedCheckbox = accomplishedCheckboxes[index];
-    accomplishedCheckbox.addEventListener("change", (event) => bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId(event.target, updateBtns, titleInputs, accomplishedCheckboxes));
+    accomplishedCheckbox.addEventListener("change", (event) => bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId(event.target, updateBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
+}
+
+for (let index = goalPrivacyCheckboxes.length - 1; index >= 0; --index)
+{
+    const goalPrivacyCheckbox = goalPrivacyCheckboxes[index];
+    goalPrivacyCheckbox.addEventListener("change", (event) => bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId(event.target, updateBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
 }

@@ -5,7 +5,8 @@ export const bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId = (
     eventTarget: EventTarget | null,
     updateButtons: HTMLCollectionOf<HTMLButtonElement>,
     titleInputs: HTMLCollectionOf<HTMLInputElement>,
-    accomplishedCheckboxes: HTMLCollectionOf<HTMLInputElement> ): void =>
+    accomplishedCheckboxes: HTMLCollectionOf<HTMLInputElement>,
+    goalPrivacyCheckboxes: HTMLCollectionOf<HTMLInputElement> ): void =>
 {
     if (eventTarget instanceof HTMLInputElement)
     {
@@ -39,6 +40,21 @@ export const bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId = (
                 {
                     changesPresent = true;
                     break;
+                }
+            }
+
+            if ( ! changesPresent)
+            {
+                for (let index = goalPrivacyCheckboxes.length - 1; index >= 0; --index)
+                {
+                    const goalPrivacyCheckbox = goalPrivacyCheckboxes[index];
+
+                    if (    eventTarget.dataset.goalId === goalPrivacyCheckbox.dataset.goalId
+                        && checkboxValueIsChanged(goalPrivacyCheckbox) )
+                    {
+                        changesPresent = true;
+                        break;
+                    }
                 }
             }
 
