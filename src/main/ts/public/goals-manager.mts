@@ -1,11 +1,12 @@
-import { bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId } from "./util/bind-event-target-init-value-change-to-btn-active-status-via-goal-id.mjs";
-import { bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId } from "./util/bind-checkbox-event-target-init-value-change-to-btn-active-status-via-goal-id.mjs";
+import { bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId } from "./goals-manager/event-listener-callback/bind-event-target-init-value-change-to-btn-active-status-via-goal-id.mjs";
+import { bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId } from "./goals-manager/event-listener-callback/bind-checkbox-event-target-init-value-change-to-btn-active-status-via-goal-id.mjs";
 
 const milestonesToggleButtons = document.getElementsByClassName("milestonesToggleBtn");
 const updateBtns = document.getElementsByClassName("updateBtn") as HTMLCollectionOf<HTMLButtonElement>;
 const titleInputs = document.getElementsByClassName("titleInput") as HTMLCollectionOf<HTMLInputElement>;
 const accomplishedCheckboxes = document.getElementsByClassName("accomplishedCheckbox") as HTMLCollectionOf<HTMLInputElement>;
 const goalPrivacyCheckboxes = document.getElementsByClassName("goalPrivacyToggle") as HTMLCollectionOf<HTMLInputElement>;
+const milestonesDivs = document.getElementsByClassName("milestonesDiv") as HTMLCollectionOf<HTMLDivElement>;
 
 for (let index = milestonesToggleButtons.length - 1; index >= 0; --index)
 {
@@ -21,6 +22,16 @@ for (let index = milestonesToggleButtons.length - 1; index >= 0; --index)
             {
                 clickedBtn.classList.remove("active");
                 clickedBtn.ariaPressed = "false";
+
+                for (let i = milestonesDivs.length - 1; i >= 0; --i)
+                {
+                    const milestonesDiv = milestonesDivs[i];
+
+                    if ( clickedBtn.dataset.goalId === milestonesDiv.dataset.goalId && ! milestonesDiv.classList.contains("d-none"))
+                    {
+                        milestonesDiv.classList.add("d-none");
+                    }
+                }
             }
             else
             {
@@ -35,6 +46,16 @@ for (let index = milestonesToggleButtons.length - 1; index >= 0; --index)
                     {
                         toggleBtn.classList.remove("active");
                         toggleBtn.ariaPressed = "false";
+                    }
+                }
+
+                for (let i = milestonesDivs.length - 1; i >= 0; --i)
+                {
+                    const milestonesDiv = milestonesDivs[i];
+
+                    if ( clickedBtn.dataset.goalId === milestonesDiv.dataset.goalId && milestonesDiv.classList.contains("d-none"))
+                    {
+                        milestonesDiv.classList.remove("d-none");
                     }
                 }
             }
