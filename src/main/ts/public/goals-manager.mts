@@ -1,7 +1,8 @@
+import { milestonesToggleBtnEventListenerCallback } from "./goals-manager/event-listener-callback/milestones-toggle-button-event-listener-callback.mjs";
 import { bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId } from "./goals-manager/event-listener-callback/bind-event-target-init-value-change-to-btn-active-status-via-goal-id.mjs";
 import { bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId } from "./goals-manager/event-listener-callback/bind-checkbox-event-target-init-value-change-to-btn-active-status-via-goal-id.mjs";
 
-const milestonesToggleButtons = document.getElementsByClassName("milestonesToggleBtn");
+const milestonesToggleButtons = document.getElementsByClassName("milestonesToggleBtn") as HTMLCollectionOf<HTMLButtonElement>;
 const updateBtns = document.getElementsByClassName("updateBtn") as HTMLCollectionOf<HTMLButtonElement>;
 const titleInputs = document.getElementsByClassName("titleInput") as HTMLCollectionOf<HTMLInputElement>;
 const accomplishedCheckboxes = document.getElementsByClassName("accomplishedCheckbox") as HTMLCollectionOf<HTMLInputElement>;
@@ -12,55 +13,7 @@ for (let index = milestonesToggleButtons.length - 1; index >= 0; --index)
 {
     const milestonesToggleBtn = milestonesToggleButtons[index];
 
-    milestonesToggleBtn.addEventListener("click", (event) =>
-    {
-        const clickedBtn = event.target;
-
-        if (clickedBtn instanceof HTMLButtonElement)
-        {
-            if (clickedBtn.classList.contains("active"))
-            {
-                clickedBtn.classList.remove("active");
-                clickedBtn.ariaPressed = "false";
-
-                for (let i = milestonesDivs.length - 1; i >= 0; --i)
-                {
-                    const milestonesDiv = milestonesDivs[i];
-
-                    if ( clickedBtn.dataset.goalId === milestonesDiv.dataset.goalId && ! milestonesDiv.classList.contains("d-none"))
-                    {
-                        milestonesDiv.classList.add("d-none");
-                    }
-                }
-            }
-            else
-            {
-                clickedBtn.classList.add("active");
-                clickedBtn.ariaPressed = "true";
-
-                for (let i = milestonesToggleButtons.length - 1; i >= 0; --i)
-                {
-                    const toggleBtn = milestonesToggleButtons[i];
-
-                    if (toggleBtn !== clickedBtn)
-                    {
-                        toggleBtn.classList.remove("active");
-                        toggleBtn.ariaPressed = "false";
-                    }
-                }
-
-                for (let i = milestonesDivs.length - 1; i >= 0; --i)
-                {
-                    const milestonesDiv = milestonesDivs[i];
-
-                    if ( clickedBtn.dataset.goalId === milestonesDiv.dataset.goalId && milestonesDiv.classList.contains("d-none"))
-                    {
-                        milestonesDiv.classList.remove("d-none");
-                    }
-                }
-            }
-        }
-    });
+    milestonesToggleBtn.addEventListener("click", (event) => milestonesToggleBtnEventListenerCallback(event, milestonesToggleButtons, milestonesDivs));
 }
 
 for (let index = titleInputs.length - 1; index >= 0; --index)
