@@ -8,12 +8,13 @@ const titleInputs = document.getElementsByClassName("titleInput") as HTMLCollect
 const accomplishedCheckboxes = document.getElementsByClassName("accomplishedCheckbox") as HTMLCollectionOf<HTMLInputElement>;
 const goalPrivacyCheckboxes = document.getElementsByClassName("goalPrivacyToggle") as HTMLCollectionOf<HTMLInputElement>;
 const milestonesDivs = document.getElementsByClassName("milestonesDiv") as HTMLCollectionOf<HTMLDivElement>;
+const addMilestoneBtn = document.getElementById("addMilestoneBtn") as HTMLButtonElement;
 
 for (let index = milestonesToggleButtons.length - 1; index >= 0; --index)
 {
     const milestonesToggleBtn = milestonesToggleButtons[index];
 
-    milestonesToggleBtn.addEventListener("click", (event) => milestonesToggleBtnEventListenerCallback(event, milestonesToggleButtons, milestonesDivs));
+    milestonesToggleBtn.addEventListener("click", (event) => milestonesToggleBtnEventListenerCallback(event, milestonesToggleButtons, milestonesDivs, addMilestoneBtn));
 }
 
 for (let index = titleInputs.length - 1; index >= 0; --index)
