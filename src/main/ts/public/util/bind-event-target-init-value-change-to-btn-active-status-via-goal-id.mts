@@ -46,10 +46,10 @@ export const bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId = (
             {
                 for (let index = accomplishedCheckBoxes.length - 1; index >= 0; --index)
                 {
-                    const accomplishedCheckBox = accomplishedCheckBoxes[index];
+                    const accomplishedCheckbox = accomplishedCheckBoxes[index];
 
-                    if ( eventTarget.dataset.goalId === accomplishedCheckBox.dataset.goalId
-                         && checkboxValueIsChanged(accomplishedCheckBox) )
+                    if ( eventTarget.dataset.goalId === accomplishedCheckbox.dataset.goalId
+                         && checkboxValueIsChanged(accomplishedCheckbox) )
                     {
                         changesPresent = true;
                         break;
