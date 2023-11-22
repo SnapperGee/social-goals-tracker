@@ -5,7 +5,7 @@ export const bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId = 
     eventTarget: EventTarget | null,
     updateButtons: HTMLCollectionOf<HTMLButtonElement>,
     titleInputs: HTMLCollectionOf<HTMLInputElement>,
-    accomplishedCheckBoxes: HTMLCollectionOf<HTMLInputElement>): void =>
+    accomplishedCheckboxes: HTMLCollectionOf<HTMLInputElement> ): void =>
 {
     if (eventTarget instanceof HTMLInputElement)
     {
@@ -30,9 +30,9 @@ export const bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId = 
         {
             let changesPresent = false;
 
-            for (let index = accomplishedCheckBoxes.length - 1; index >= 0; --index)
+            for (let index = accomplishedCheckboxes.length - 1; index >= 0; --index)
             {
-                const accomplishedCheckbox = accomplishedCheckBoxes[index];
+                const accomplishedCheckbox = accomplishedCheckboxes[index];
 
                 if (    eventTarget.dataset.goalId === accomplishedCheckbox.dataset.goalId
                      && checkboxValueIsChanged(accomplishedCheckbox) )
