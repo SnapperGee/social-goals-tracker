@@ -13,7 +13,6 @@ const addMilestoneBtn = document.getElementById("addMilestoneBtn") as HTMLButton
 for (let index = milestonesToggleButtons.length - 1; index >= 0; --index)
 {
     const milestonesToggleBtn = milestonesToggleButtons[index];
-
     milestonesToggleBtn.addEventListener("click", (event) => milestonesToggleBtnEventListenerCallback(event, milestonesToggleButtons, milestonesDivs, addMilestoneBtn));
 }
 
