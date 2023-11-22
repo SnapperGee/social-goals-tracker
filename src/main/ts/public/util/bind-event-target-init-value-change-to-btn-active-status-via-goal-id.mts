@@ -9,7 +9,7 @@ export const bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId = (
 {
     if (eventTarget instanceof HTMLInputElement)
     {
-        if (eventTarget.value !== eventTarget.dataset.initValue)
+        if ( titleInputValueIsChanged(eventTarget) )
         {
             for (let index = updateButtons.length - 1; index >= 0; --index)
             {
