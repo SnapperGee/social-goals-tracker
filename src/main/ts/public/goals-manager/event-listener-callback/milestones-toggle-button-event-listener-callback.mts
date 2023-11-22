@@ -23,7 +23,7 @@ export const milestonesToggleBtnEventListenerCallback = (
             {
                 const milestonesDiv = milestonesDivs[i];
 
-                if ( clickedBtn.dataset.goalId === milestonesDiv.dataset.goalId && ! milestonesDiv.classList.contains("d-none"))
+                if (clickedBtn.dataset.goalId === milestonesDiv.dataset.goalId && ! milestonesDiv.classList.contains("d-none"))
                 {
                     milestonesDiv.classList.add("d-none");
                 }
@@ -55,9 +55,13 @@ export const milestonesToggleBtnEventListenerCallback = (
             {
                 const milestonesDiv = milestonesDivs[i];
 
-                if ( clickedBtn.dataset.goalId === milestonesDiv.dataset.goalId && milestonesDiv.classList.contains("d-none"))
+                if (clickedBtn.dataset.goalId === milestonesDiv.dataset.goalId && milestonesDiv.classList.contains("d-none"))
                 {
                     milestonesDiv.classList.remove("d-none");
+                }
+                else if (clickedBtn.dataset.goalId !== milestonesDiv.dataset.goalId && ! milestonesDiv.classList.contains("d-none"))
+                {
+                    milestonesDiv.classList.add("d-none");
                 }
             }
         }
