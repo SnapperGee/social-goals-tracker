@@ -4,11 +4,26 @@ import express from "express";
 import exphbs from "express-handlebars";
 import session from "express-session";
 import { resolve as resolvePath } from "node:path";
-import "dotenv/config";
+import "dotenv/config.js";
+import mysql, { OkPacket, RowDataPacket } from 'mysql2/promise';
+import { v4 as uuidv4 } from 'uuid';
+
+declare module 'express-session' {
+    export interface SessionData {
+      name: { [key: string]: any };
+    }
+  }
 
 const SRC_ROOT = resolvePath(".", "src", "main");
 
 const PORT = process.env.EXPRESS_SERVER_PORT;
+
+const db = mysql.createPool({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+  });
 
 const app = express();
 
@@ -42,7 +57,74 @@ app.use(express.static(resolvePath(SRC_ROOT, "js", "public")));
 
 app.use(router);
 
-app.listen(PORT, () =>
+app.post('/signup', async (req, res) => {
+    const { name, password } = req.body;
+    const id = uuidv4(); // Generate a UUID
+  
+    try {
+      // Check if the user already exists
+      const [existingUsers] = await db.execute<RowDataPacket[]>('SELECT * FROM user WHERE name = ?', [name]);
+  
+      if (existingUsers.length > 0) {
+        return res.send('User already exists');
+      }
+  
+      // Create a new user
+      await db.execute('INSERT INTO user (id, name, password) VALUES (?, ?, ?)', [id, name, password]);
+  
+      // Create a user session
+      req.session.name = name;
+  
+      // Redirect to the homepage (adjust the route accordingly)
+      res.redirect('/homepage');
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+
+  app.post('/login', async (req, res) => {
+    const { name, password } = req.body;
+  
+    try {
+      // Check if the user exists
+      const [existingUsers] = await db.execute<RowDataPacket[]>('SELECT * FROM user WHERE name = ?', [name]);
+  
+      if (existingUsers.length === 0) {
+        // Pass the error message to the template
+        return res.render('login', { errorMessage: 'User does not exist. Please sign up.' });
+      }
+  
+      // Validate the password (you might want to use a more secure method, e.g., bcrypt)
+      const user = existingUsers[0];
+      if (user.password !== password) {
+        // Pass the error message to the template
+        return res.render('login', { errorMessage: 'Incorrect password. Please try again.' });
+      }
+  
+      // Create a user session
+      req.session.name = name;
+  
+      // Redirect to the homepage (adjust the route accordingly)
+      res.redirect('/homepage');
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+
+  app.get('/homepage', (req, res) => {
+    // Check if the user is logged in
+    if (!req.session.name) {
+      // Redirect to the login page or handle as needed
+      return res.redirect('/');
+    }
+  
+    // Render the homepage template (adjust the path and data accordingly)
+    res.render('homepage', { name: req.session.name });
+  });
+  
+  app.listen(PORT, () =>
 {
     console.log(`Server listening on port http://localhost:${PORT}`);
 });

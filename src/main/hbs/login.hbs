@@ -10,9 +10,14 @@
     <div class=".col-4">
         <h2>Login</h2>
 
+    <!-- Display error message if it exists -->
+    {{#if errorMessage}}
+      <p class="error-message">{{errorMessage}}</p>
+    {{/if}}
+
         <form action="/login" method="post">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+            <label for="name">Username:</label>
+            <input type="text" id="name" name="name" required>
 
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
