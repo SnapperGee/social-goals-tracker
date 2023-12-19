@@ -3,10 +3,9 @@ import { router } from "./route/index.mjs";
 import express from "express";
 import exphbs from "express-handlebars";
 import session from "express-session";
+import { PrismaClient } from '../prisma/index.js';
 import { resolve as resolvePath } from "node:path";
 import "dotenv/config.js";
-import mysql, { OkPacket, RowDataPacket } from 'mysql2/promise';
-import { v4 as uuidv4 } from 'uuid';
 
 declare module 'express-session' {
     export interface SessionData {
@@ -18,12 +17,7 @@ const SRC_ROOT = resolvePath(".", "src", "main");
 
 const PORT = process.env.EXPRESS_SERVER_PORT;
 
-const db = mysql.createPool({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-  });
+const prisma = new PrismaClient();
 
 const app = express();
 
@@ -59,18 +53,17 @@ app.use(router);
 
 app.post('/signup', async (req, res) => {
     const { name, password } = req.body;
-    const id = uuidv4(); // Generate a UUID
   
     try {
       // Check if the user already exists
-      const [existingUsers] = await db.execute<RowDataPacket[]>('SELECT * FROM user WHERE name = ?', [name]);
+      const existingUser = await prisma.user.findUnique({ where: { name } });
   
-      if (existingUsers.length > 0) {
+      if (existingUser) {
         return res.send('User already exists');
       }
   
       // Create a new user
-      await db.execute('INSERT INTO user (id, name, password) VALUES (?, ?, ?)', [id, name, password]);
+      await prisma.user.create({ data: { name, password } });
   
       // Create a user session
       req.session.name = name;
@@ -88,16 +81,15 @@ app.post('/signup', async (req, res) => {
   
     try {
       // Check if the user exists
-      const [existingUsers] = await db.execute<RowDataPacket[]>('SELECT * FROM user WHERE name = ?', [name]);
+      const existingUser = await prisma.user.findUnique({ where: { name }});
   
-      if (existingUsers.length === 0) {
+      if (!existingUser) {
         // Pass the error message to the template
         return res.render('login', { errorMessage: 'User does not exist. Please sign up.' });
       }
   
       // Validate the password (you might want to use a more secure method, e.g., bcrypt)
-      const user = existingUsers[0];
-      if (user.password !== password) {
+      if (existingUser.password !== password) {
         // Pass the error message to the template
         return res.render('login', { errorMessage: 'Incorrect password. Please try again.' });
       }
@@ -123,6 +115,10 @@ app.post('/signup', async (req, res) => {
     // Render the homepage template (adjust the path and data accordingly)
     res.render('homepage', { name: req.session.name });
   });
+
+  app.on('beforeExit', () => {
+    prisma.$disconnect();
+});
   
   app.listen(PORT, () =>
 {
