@@ -8,7 +8,7 @@ export const bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId = 
     accomplishedCheckboxes: HTMLCollectionOf<HTMLInputElement>,
     goalPrivacyCheckboxes: HTMLCollectionOf<HTMLInputElement> ): void =>
 {
-    if (element instanceof HTMLInputElement)
+    if (element instanceof HTMLInputElement && element.type === "checkbox")
     {
         if ( checkboxValueIsChanged(element) )
         {
@@ -94,7 +94,7 @@ export const bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId = 
     }
     else
     {
-        throw new TypeError(`${bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId.name}: element argument is not an instance of HTMLInputElement: ${element}`);
+        throw new TypeError(`${bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId.name}: element argument is not an instance of checkbox HTMLInputElement: ${element}`);
     }
 };
 
