@@ -8,7 +8,7 @@
  * @param milestonesDivs All milestone divs.
  * @param addMilestoneBtn Add milestone button.
  */
-export const milestonesToggleBtnEventListenerCallback = (
+export const milestonesToggleBtnClickHandler = (
     event: Event,
     milestonesToggleBtns: HTMLCollectionOf<HTMLButtonElement>,
     milestonesDivs: HTMLCollectionOf<HTMLDivElement>,
@@ -78,4 +78,4 @@ export const milestonesToggleBtnEventListenerCallback = (
     }
 };
 
-export default milestonesToggleBtnEventListenerCallback;
+export default milestonesToggleBtnClickHandler;

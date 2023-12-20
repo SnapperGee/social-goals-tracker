@@ -1,4 +1,4 @@
-import { milestonesToggleBtnEventListenerCallback } from "./goals-manager/event-listener-callback/milestones-toggle-button-event-listener-callback.mjs";
+import { milestonesToggleBtnClickHandler } from "./goals-manager/event-listener-callback/milestones-toggle-btn-click-handler.mjs";
 import { bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId } from "./goals-manager/event-listener-callback/bind-event-target-init-value-change-to-btn-active-status-via-goal-id.mjs";
 import { bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId } from "./goals-manager/event-listener-callback/bind-checkbox-event-target-init-value-change-to-btn-active-status-via-goal-id.mjs";
 
@@ -14,7 +14,7 @@ const addMilestoneBtn = document.getElementById("addMilestoneBtn") as HTMLButton
 for (let index = milestonesToggleButtons.length - 1; index >= 0; --index)
 {
     const milestonesToggleBtn = milestonesToggleButtons[index];
-    milestonesToggleBtn.addEventListener("click", (event) => milestonesToggleBtnEventListenerCallback(event, milestonesToggleButtons, milestonesDivs, addMilestoneBtn));
+    milestonesToggleBtn.addEventListener("click", (event) => milestonesToggleBtnClickHandler(event, milestonesToggleButtons, milestonesDivs, addMilestoneBtn));
 }
 
 for (let index = titleInputs.length - 1; index >= 0; --index)
