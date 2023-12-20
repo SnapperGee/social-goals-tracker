@@ -81,17 +81,17 @@ app.post('/signup', async (req, res) => {
   
     try {
       // Check if the user exists
-      const existingUser = await prisma.user.findUnique({ where: { name }});
+      const existingUser = await prisma.user.findUnique({ where: { name } });
   
       if (!existingUser) {
         // Pass the error message to the template
-        return res.render('login', { errorMessage: 'User does not exist. Please sign up.' });
+        return res.render('login', { errorMessage: 'User does not exist. Please sign up.', bootstrapClass: 'text-danger fw-bold' });
       }
   
       // Validate the password (you might want to use a more secure method, e.g., bcrypt)
-      if (existingUser.password !== password) {
+      if (existingUser.password && existingUser.password !== password) {
         // Pass the error message to the template
-        return res.render('login', { errorMessage: 'Incorrect password. Please try again.' });
+        return res.render('login', { errorMessage: 'Incorrect password. Please try again.', bootstrapClass: 'text-danger fw-bold' });
       }
   
       // Create a user session
