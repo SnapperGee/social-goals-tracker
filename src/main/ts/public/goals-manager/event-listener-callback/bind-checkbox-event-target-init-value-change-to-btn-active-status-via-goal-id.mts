@@ -2,21 +2,21 @@ import { titleInputValueIsChanged } from "../title-input-value-is-changed.mjs";
 import { checkboxValueIsChanged } from "../checkbox-value-is-changed.mjs";
 
 export const bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId = (
-    eventTarget: EventTarget | null,
+    element: Element,
     updateButtons: HTMLCollectionOf<HTMLButtonElement>,
     titleInputs: HTMLCollectionOf<HTMLInputElement>,
     accomplishedCheckboxes: HTMLCollectionOf<HTMLInputElement>,
     goalPrivacyCheckboxes: HTMLCollectionOf<HTMLInputElement> ): void =>
 {
-    if (eventTarget instanceof HTMLInputElement)
+    if (element instanceof HTMLInputElement)
     {
-        if ( checkboxValueIsChanged(eventTarget) )
+        if ( checkboxValueIsChanged(element) )
         {
             for (let index = updateButtons.length - 1; index >= 0; --index)
             {
                 const updateBtn = updateButtons[index];
 
-                if (updateBtn.dataset.goalId === eventTarget.dataset.goalId)
+                if (updateBtn.dataset.goalId === element.dataset.goalId)
                 {
                     updateBtn.disabled = false;
 
@@ -35,7 +35,7 @@ export const bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId = 
             {
                 const accomplishedCheckbox = accomplishedCheckboxes[index];
 
-                if (    eventTarget.dataset.goalId === accomplishedCheckbox.dataset.goalId
+                if (    element.dataset.goalId === accomplishedCheckbox.dataset.goalId
                      && checkboxValueIsChanged(accomplishedCheckbox) )
                 {
                     changesPresent = true;
@@ -49,7 +49,7 @@ export const bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId = 
                 {
                     const goalPrivacyCheckbox = goalPrivacyCheckboxes[index];
 
-                    if (    eventTarget.dataset.goalId === goalPrivacyCheckbox.dataset.goalId
+                    if (    element.dataset.goalId === goalPrivacyCheckbox.dataset.goalId
                         && checkboxValueIsChanged(goalPrivacyCheckbox) )
                     {
                         changesPresent = true;
@@ -64,7 +64,7 @@ export const bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId = 
                 {
                     const titleInput = titleInputs[index];
 
-                    if (  eventTarget.dataset.goalId === titleInput.dataset.goalId
+                    if (  element.dataset.goalId === titleInput.dataset.goalId
                           && titleInputValueIsChanged(titleInput) )
                     {
                         changesPresent = true;
@@ -79,7 +79,7 @@ export const bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId = 
                 {
                     const updateBtn = updateButtons[index];
 
-                    if (updateBtn.dataset.goalId === eventTarget.dataset.goalId)
+                    if (updateBtn.dataset.goalId === element.dataset.goalId)
                     {
                         updateBtn.disabled = true;
 
@@ -91,6 +91,10 @@ export const bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId = 
                 }
             }
         }
+    }
+    else
+    {
+        throw new TypeError(`${bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId.name}: element argument is not an instance of HTMLInputElement: ${element}`);
     }
 };
 

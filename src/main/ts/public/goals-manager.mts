@@ -27,11 +27,11 @@ for (let index = titleInputs.length - 1; index >= 0; --index)
 for (let index = accomplishedCheckboxes.length - 1; index >= 0; --index)
 {
     const accomplishedCheckbox = accomplishedCheckboxes[index];
-    accomplishedCheckbox.addEventListener("change", (event) => bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId(event.target, updateBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
+    accomplishedCheckbox.addEventListener("change", () => bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId(accomplishedCheckbox, updateBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
 }
 
 for (let index = goalPrivacyCheckboxes.length - 1; index >= 0; --index)
 {
     const goalPrivacyCheckbox = goalPrivacyCheckboxes[index];
-    goalPrivacyCheckbox.addEventListener("change", (event) => bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId(event.target, updateBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
+    goalPrivacyCheckbox.addEventListener("change", () => bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId(goalPrivacyCheckbox, updateBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
 }
