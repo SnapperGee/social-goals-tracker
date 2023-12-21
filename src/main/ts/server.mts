@@ -59,7 +59,7 @@ app.post('/signup', async (req, res) => {
       const existingUser = await prisma.user.findUnique({ where: { name } });
   
       if (existingUser) {
-        return res.send('User already exists');
+        return res.render('signup', { errorMessage: 'User already exists. Please try again.', bootstrapClass: 'text-danger fw-bold' });
       }
   
       // Create a new user

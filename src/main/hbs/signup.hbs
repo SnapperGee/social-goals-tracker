@@ -3,8 +3,8 @@
     <script src="login.mjs" type="module"></script>
 {{/section}}
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
+<div class="container mt-5 pt-5">
+    <div class="row mt-5 pt-5">
         <div class="col-md-4">
             <div class="card bg-transparent">
                 <div class="card-header">
@@ -13,14 +13,22 @@
                 <div class="card-body">
                     <h2 class="text-center mb-4">Create a New Account</h2>
 
+           <!-- Display error message if it exists -->
+                    {{#if errorMessage}}
+                    <div class="alert {{bootstrapClass}} text-center fw-bold" role="alert">
+                        {{errorMessage}}
+                    </div>
+                    {{/if}}
+                    
             <form action="/signup" method="post">
                 <label for="name">Enter Username:</label>
-                <input type="text" id="name" name="name" required>
+                <br>
+                <input type="text" class="form-control" id="name" name="name" required>
                 <br>
                 <label for="password">Enter Password:</label>
                 <br>
-                <input type="password" id="password" name="password" required>
-                <br><br>
+                <input type="password" class="form-control" id="password" name="password" required>
+                <br>
                 <input class="btn btn-primary shadow mb-3" type="submit" value="Sign Up">
             </form>
             <p>Login to Account <a href="/">Log In</a></p>
