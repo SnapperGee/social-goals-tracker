@@ -61,7 +61,7 @@ app.post('/signup', async (req, res) => {
       await prisma.user.create({ data: { name, password } });
   
       // Create a user session
-      req.session.name = name;
+      req.session.user = { name };
   
       // Redirect to the homepage (adjust the route accordingly)
       res.redirect('/homepage');
@@ -90,7 +90,7 @@ app.post('/signup', async (req, res) => {
       }
   
       // Create a user session
-      req.session.name = name;
+      req.session.user = { name };
   
       // Redirect to the homepage (adjust the route accordingly)
       res.redirect('/homepage');
@@ -102,13 +102,13 @@ app.post('/signup', async (req, res) => {
 
   app.get('/homepage', (req, res) => {
     // Check if the user is logged in
-    if (!req.session.name) {
+    if (!req.session.user) {
       // Redirect to the login page or handle as needed
       return res.redirect('/');
     }
   
     // Render the homepage template (adjust the path and data accordingly)
-    res.render('homepage', { name: req.session.name });
+    res.render('homepage', { name: req.session.user.name });
   });
 
   app.on('beforeExit', () => {
