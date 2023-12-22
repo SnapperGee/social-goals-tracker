@@ -7,11 +7,6 @@ import { PrismaClient } from '../prisma/index.js';
 import { resolve as resolvePath } from "node:path";
 import "dotenv/config.js";
 
-declare module 'express-session' {
-    export interface SessionData {
-      name: { [key: string]: any };
-    }
-  }
 
 const SRC_ROOT = resolvePath(".", "src", "main");
 
