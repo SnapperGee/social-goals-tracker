@@ -110,10 +110,6 @@ app.post('/signup', async (req, res) => {
     // Render the homepage template (adjust the path and data accordingly)
     res.render('homepage', { name: req.session.user.name });
   });
-
-  app.on('beforeExit', () => {
-    prisma.$disconnect();
-});
   
   app.listen(PORT, () =>
 {
