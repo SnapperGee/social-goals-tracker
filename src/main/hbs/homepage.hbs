@@ -2,3 +2,73 @@
     <link href="login-signup.css" rel="stylesheet" />
     <script src="login.mjs" type="module"></script>
 {{/section}}
+
+<!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="/homepage">SGT</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon text-white"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/goalsmanager/9c47064e-82d7-4483-a5d1-38ff4f7ea314">Goals Manager</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="/">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<!-- homepage.hbs -->
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <!-- Form Section -->
+      <div class="card mt-4" style="background: linear-gradient(to right, #ff00ff, #00ffff); color: #fff;">
+        <div class="card-body">
+          <form action="/create-goal" method="post">
+            <div class="mb-3">
+              <h2 for="title" class="form-label">Create a Goal</h2>
+              <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            
+            <div class="form-check mb-3">
+              <input type="checkbox" class="form-check-input" id="isPrivate" name="isPrivate">
+              <label class="form-check-label" for="isPrivate">Private</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create Goal</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{{#if goals.length}}
+  <ul>
+           <div class="container mt-4">
+            <h2>Goals Feed</h2>
+            <hr>
+         
+    {{#each goals}}
+    <div class="card mb-3" style="background: linear-gradient(to right, blue, #ff00ff, #00ffff); color: #fff;">
+      <div class="card-body">
+          <h5 class="card-title">{{this.title}}</h5>
+          <p class="card-text">{{this.content}}</p>
+          <p class="card-text"><small style="color: yellow;">Posted by {{this.user.name}}</small></p>
+        <form action="/delete-goal" method="post" class="d-inline">
+          <input type="hidden" name="goalId" value="{{this.id}}">
+          <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+        </form>
+      </div>
+    </div>
+    {{/each}}
+</div>
+  </ul>
+{{else}}
+  <p>No goals available.</p>
+{{/if}}

@@ -1,16 +1,17 @@
 import { Router } from "express";
+import { homepageController, deleteGoal } from "../controller/homepage-controller.mjs";
+import { createGoal } from "../controller/goal-controller.mjs"; // Make sure the path is correct
+import { isAuthenticated } from '../middleware/authentication.mjs';
+
 
 export const homepageRouter = Router();
 
-homepageRouter.get('/homepage', (req, res) => {
-    // Check if the user is logged in
-    if (!req.session.user) {
-      // Redirect to the login page or handle as needed
-      return res.redirect('/');
-    }
-  
-    // Render the homepage template (adjust the path and data accordingly)
-    res.render('homepage', { name: req.session.user.name });
-  });
+homepageRouter.get("/homepage", isAuthenticated, homepageController);
+
+  // Add a route for handling the creation of goals
+homepageRouter.post("/create-goal", createGoal);
+
+// Add a route for handling the deletion of goals
+homepageRouter.post("/delete-goal", deleteGoal);
 
   export default homepageRouter;
