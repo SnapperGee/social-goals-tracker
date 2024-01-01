@@ -1,22 +1,38 @@
 import type { Request, Response } from "express";
-import { PrismaClient } from '../../prisma/index.js';
+import { prismaClient } from '../connection.mjs';
 
-const prisma = new PrismaClient();
+export const signinUser = async (req: any, res: any) => {
+  const { name, password } = req.body;
 
-export const loginUser = async (name: string, password: string): Promise<boolean> => {
+  const loginUser = async (name: string, password: string): Promise<boolean> => {
+    try {
+      const existingUser = await prismaClient.user.findUnique({ where: { name } });
+
+      if (!existingUser || (existingUser.password && existingUser.password !== password)) {
+        return false; // Authentication failed
+      }
+
+      return true; // Authentication successful
+    } catch (error) {
+      console.error(error);
+      throw new Error('Internal Server Error');
+    }
+  };
+
   try {
-    const existingUser = await prisma.user.findUnique({ where: { name } });
+    const isAuthenticated = await loginUser(name, password);
 
-    if (!existingUser || (existingUser.password && existingUser.password !== password)) {
-      return false; // Authentication failed
+    if (!isAuthenticated) {
+      return res.render('login', { errorMessage: 'Invalid credentials.', bootstrapClass: 'text-danger fw-bold' });
     }
 
-    return true; // Authentication successful
+    req.session.user = { name };
+    res.redirect('/homepage');
   } catch (error) {
     console.error(error);
-    throw new Error('Internal Server Error');
+    res.status(500).send('Internal Server Error');
   }
-};
+}
 
 export const loginController = (req: Request, res: Response): void =>
 {

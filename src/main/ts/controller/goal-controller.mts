@@ -1,8 +1,6 @@
 // goal-controller.mts
 import type { Request, Response } from "express";
-import { PrismaClient } from '../../prisma/index.js';
-
-const prisma = new PrismaClient();
+import { prismaClient } from '../connection.mjs';
 
 // goal-controller.mts
 export const createGoal = async (req: Request, res: Response): Promise<void> => {
@@ -15,7 +13,7 @@ export const createGoal = async (req: Request, res: Response): Promise<void> => 
         res.status(401).send('Unauthorized');
       }
   
-      const goal = await prisma.goal.create({
+      const goal = await prismaClient.goal.create({
         data: {
           title,
           private: isPrivate || false,

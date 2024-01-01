@@ -1,13 +1,11 @@
 // homepage-controller.mts
 import type { Request, Response } from "express";
-import { PrismaClient } from '../../prisma/index.js';
-
-const prisma = new PrismaClient();
+import { prismaClient } from '../connection.mjs';
 
 export const homepageController = async (req: Request, res: Response): Promise<void> => {
   try {
     // Fetch all goals from the database
-    const goals = await prisma.goal.findMany({
+    const goals = await prismaClient.goal.findMany({
       include: {
         user: true, // Include the user information related to each goal
       },
@@ -26,7 +24,7 @@ export const deleteGoal = async (req: Request, res: Response): Promise<void> => 
   
     try {
       // Delete the goal based on the provided goalId
-      await prisma.goal.delete({
+      await prismaClient.goal.delete({
         where: {
           id: goalId,
         },

@@ -1,26 +1,42 @@
 import type { Request, Response } from "express";
-import { PrismaClient } from '../../prisma/index.js';
+import { prismaClient } from '../connection.mjs';
 
-const prisma = new PrismaClient();
+export const registerUser = async (req: any, res: any) => {
+  const { name, password } = req.body;
 
-export const signupUser = async (name: string, password: string): Promise<boolean> => {
+  const signupUser = async (name: string, password: string): Promise<boolean> => {
+    try {
+      // Check if the user already exists
+      const existingUser = await prismaClient.user.findUnique({ where: { name } });
+  
+      if (existingUser) {
+        return false; // User already exists
+      }
+  
+      // Create a new user
+      await prismaClient.user.create({ data: { name, password } });
+  
+      return true; // Signup successful
+    } catch (error) {
+      console.error(error);
+      throw new Error('Internal Server Error');
+    }
+  };
+
   try {
-    // Check if the user already exists
-    const existingUser = await prisma.user.findUnique({ where: { name } });
+    const isSignupSuccessful = await signupUser(name, password);
 
-    if (existingUser) {
-      return false; // User already exists
+    if (!isSignupSuccessful) {
+      return res.render('signup', { errorMessage: 'User already exists. Please try again.', bootstrapClass: 'text-danger fw-bold' });
     }
 
-    // Create a new user
-    await prisma.user.create({ data: { name, password } });
-
-    return true; // Signup successful
+    req.session.user = { name };
+    res.redirect('/homepage');
   } catch (error) {
     console.error(error);
-    throw new Error('Internal Server Error');
+    res.status(500).send('Internal Server Error');
   }
-};
+}
 
 export const signupController = (req: Request, res: Response): void =>
 {

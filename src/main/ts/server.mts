@@ -3,7 +3,6 @@ import { router } from "./route/index.mjs";
 import express from "express";
 import exphbs from "express-handlebars";
 import session from "express-session";
-import { PrismaClient } from '../prisma/index.js';
 import { resolve as resolvePath } from "node:path";
 import "dotenv/config.js";
 
@@ -11,8 +10,6 @@ import "dotenv/config.js";
 const SRC_ROOT = resolvePath(".", "src", "main");
 
 const PORT = process.env.EXPRESS_SERVER_PORT;
-
-const prisma = new PrismaClient();
 
 const app = express();
 
@@ -49,6 +46,11 @@ app.use(express.static(resolvePath(SRC_ROOT, "js", "public")));
 
 app.use(router);
 
+app.get('/check-session', (req, res) => {
+    console.log(req.session);
+    res.send('Session data logged in the server console.');
+  });
+  
   app.listen(PORT, () =>
 {
     console.log(`Server listening on port http://localhost:${PORT}`);
