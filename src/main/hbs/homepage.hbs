@@ -46,31 +46,37 @@
       </div>
     </div>
   </div>
-    {{#if req.session.user}}
-           <div class="container mt-4">
-            <h2>Welcome, {{req.session.user.name}}!</h2>
-            <hr>
-            </div>
-      {{/if}}
 
 {{#if goals.length}}
   <ul>
-       
+         <div class="container mt-4">
+
+          <!-- Attempting to display current user currently logged into session (Displays: "Welcome, !") -->
+            <h2>Welcome, {{req.session.user.name}}!</h2>
+            <hr>
+
     {{#each goals}}
     <div class="card mb-3" style="background: linear-gradient(to right, blue, #ff00ff, #00ffff); color: #fff;">
       <div class="card-body">
           <h5 class="card-title">{{this.title}}</h5>
           <p class="card-text">{{this.content}}</p>
           <p class="card-text"><small style="color: yellow;">Posted by {{this.user.name}}</small></p>
+
+
+          <!-- Area to only display delete buttons for currently logged in user in session (Currently needs fixing. Refer to helper file: 'eq.mts') -->
         {{#if (eq this.name req.session.name)}}
         <form action="/delete-goal" method="post" class="d-inline">
           <input type="hidden" name="goalId" value="{{this.id}}">
           <button type="submit" class="btn btn-danger btn-sm">Delete</button>
         </form>
         {{/if}}
+
+
+
       </div>
     </div>
     {{/each}}
+     </div>
   </ul>
 {{else}}
   <p>No goals available.</p>
