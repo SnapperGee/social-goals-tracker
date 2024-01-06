@@ -36,3 +36,24 @@ export const deleteGoal = async (req: Request, res: Response): Promise<void> => 
       res.status(500).send('Internal Server Error');
     }
   };
+
+  export const editGoal = async (req: Request, res: Response): Promise<void> => {
+    const { goalId, editContent } = req.body;
+  try {
+    // Update the goal content based on the provided goalId
+    await prismaClient.goal.update({
+      where: {
+        id: goalId,
+      },
+      data: {
+        title: editContent,
+      },
+    });
+
+    // Redirect or send a response as needed
+    res.redirect('/homepage');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+  };

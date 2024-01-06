@@ -50,9 +50,7 @@
 {{#if goals.length}}
   <ul>
          <div class="container mt-4">
-
-          <!-- Attempting to display current user currently logged into session (Displays: "Welcome, !") -->
-            <h2>Welcome, {{req.session.user.name}}!</h2>
+            <h2>Welcome, {{session.user.name}}!</h2>
             <hr>
 
     {{#each goals}}
@@ -64,14 +62,34 @@
 
 
           <!-- Area to only display delete buttons for currently logged in user in session (Currently needs fixing. Refer to helper file: 'eq.mts') -->
-        {{#if (eq this.name req.session.name)}}
+        {{#if (eq session.user.name this.name)}}
         <form action="/delete-goal" method="post" class="d-inline">
           <input type="hidden" name="goalId" value="{{this.id}}">
           <button type="submit" class="btn btn-danger btn-sm">Delete</button>
         </form>
         {{/if}}
 
+        {{#if (eq session.user.name this.name)}}
+        <!-- Edit Button -->
+       <button class="btn btn-primary btn-sm" onclick="toggleEditForm('{{this.id}}')">Edit</button>
 
+        <!-- Edit Form -->
+        <form id="editForm-{{this.id}}" action="/edit-goal" method="post" class="d-inline">
+            <input type="hidden" name="goalId" value="{{this.id}}">
+            <input type="text" id="editContent-{{this.id}}" name="editContent" value="{{this.title}}" class="d-none">
+            <button type="submit" class="btn btn-success btn-sm d-none">Save</button>
+          </form>
+        <script>
+          function toggleEditForm(goalId) {
+          const editContentInput = document.getElementById(`editContent-${goalId}`);
+          const saveButton = document.querySelector(`#editForm-${goalId} [type="submit"]`);
+
+          editContentInput.classList.toggle('d-none');
+          saveButton.classList.toggle('d-none');
+          
+    }
+  </script>
+      {{/if}}
 
       </div>
     </div>

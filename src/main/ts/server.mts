@@ -37,6 +37,10 @@ app.set("view engine", "hbs");
 app.set("views", resolvePath(SRC_ROOT, "hbs"));
 
 app.use(session(sessionConfig));
+app.use(function (req, res, next) {
+    res.locals.session = req.session;
+    next();
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

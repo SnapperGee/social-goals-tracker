@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { homepageController, deleteGoal } from "../controller/homepage-controller.mjs";
+import { homepageController, deleteGoal, editGoal } from "../controller/homepage-controller.mjs";
 import { createGoal } from "../controller/goal-controller.mjs"; // Make sure the path is correct
 import { isAuthenticated } from '../middleware/authentication.mjs';
 
@@ -13,5 +13,7 @@ homepageRouter.post("/create-goal", createGoal);
 
 // Add a route for handling the deletion of goals
 homepageRouter.post("/delete-goal", deleteGoal);
+
+homepageRouter.post("/edit-goal", editGoal);
 
   export default homepageRouter;
