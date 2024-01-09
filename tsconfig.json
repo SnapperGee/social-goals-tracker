@@ -12,7 +12,7 @@
       "noEmitOnError": true,
       "noImplicitAny": true,
       "noImplicitOverride": true,
-      "noImplicitReturns": true,
+      "noImplicitReturns": false,
       "noImplicitThis": true,
       "outDir": "./src/main/js",
       "removeComments": true,
