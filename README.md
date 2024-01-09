@@ -43,7 +43,7 @@ THEN the current session is terminated, and I am taken back to the login screen
 • Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
 ```
 
-![img](./src/main/assets/social-goals-tracker-screenshot-2.png)
+![social goals tracker screen shot](./docs/social-goals-tracker-screenshot.png)
 
 ## Deployed Heroku Link
 
