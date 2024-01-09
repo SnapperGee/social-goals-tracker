@@ -1,0 +1,105 @@
+{{#section "head"}}
+    <link href="login-signup.css" rel="stylesheet" />
+    <script src="login.mjs" type="module"></script>
+{{/section}}
+
+<!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+          <a href="/homepage">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="40" fill="black"/>
+                <g transform="translate(-28, 12)">
+                <path fill="#e827b5" d="M52.8,29.082l12.818,0l0-2.584l-12.818,0q-2.516,0-4.216,1.972q-1.734,2.006-1.734,4.862q0,2.584,1.734,4.488q1.7,1.938,4.216,1.938l3.4,0l3.468,0q1.53,0,2.72,1.292q1.122,1.36,1.122,2.958q0,1.904-1.105,3.094t-2.737,1.19l-12.818,0l0,2.108l12.818,0q2.55,0,4.25-1.768t1.7-4.624q0-2.584-1.7-4.488q-1.734-1.904-4.25-1.904l-3.468,0l-3.4,0q-1.564,0-2.686-1.36q-1.156-1.258-1.156-2.924q0-1.904,1.105-3.077t2.737-1.173z M82.06856,28.64l6.562,0l0-2.142l-6.562,0q-4.896,0-8.296,3.468q-3.434,3.502-3.434,8.738q0,4.862,3.434,8.296t8.296,3.434l4.352,0l2.21,0l0-2.176l0-10.88l-2.21,0l-5.202,0l0,2.176l5.202,0l0,8.704l-4.352,0q-3.876,0-6.698-2.822t-2.822-6.732q0-4.25,2.822-7.174q2.788-2.89,6.698-2.89z M111.33712,26.6l-18.428,0l0,2.074l8.364,0l0,21.794l2.108,0l0-21.794l7.956,0l0-2.074z"/><path fill="#d631b5" d=""/>
+                </g>
+            </svg>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon text-white"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="/">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<!-- homepage.hbs -->
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <!-- Form Section -->
+      <div class="card mt-4" style="background: linear-gradient(to right, #ff00ff, #00ffff); color: #fff;">
+        <div class="card-body">
+          <form action="/create-goal" method="post">
+            <div class="mb-3">
+              <h2 for="title" class="form-label">Create a Goal</h2>
+              <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            
+            <div class="form-check mb-3">
+              <input type="checkbox" class="form-check-input" id="isPrivate" name="isPrivate">
+              <label class="form-check-label" for="isPrivate">Private</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create Goal</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{{#if goals.length}}
+  <ul>
+         <div class="container mt-4">
+            <h2>Welcome, {{session.user.name}}!</h2>
+            <hr>
+
+    {{#each goals}}
+    <div class="card mb-3" style="background: linear-gradient(to right, blue, #ff00ff, #00ffff); color: #fff;">
+      <div class="card-body">
+          <h5 class="card-title">{{this.title}}</h5>
+          <p class="card-text">{{this.content}}</p>
+          <p class="card-text"><small style="color: yellow;">Posted by {{this.user.name}}</small></p>
+
+
+          <!-- Area to only display delete buttons for currently logged in user in session (Currently needs fixing. Refer to helper file: 'eq.mts') -->
+        {{#if (eq session.user.name this.name)}}
+        <form action="/delete-goal" method="post" class="d-inline">
+          <input type="hidden" name="goalId" value="{{this.id}}">
+          <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+        </form>
+        {{/if}}
+
+        {{#if (eq session.user.name this.name)}}
+        <!-- Edit Button -->
+       <button class="btn btn-primary btn-sm" onclick="toggleEditForm('{{this.id}}')">Edit</button>
+
+        <!-- Edit Form -->
+        <form id="editForm-{{this.id}}" action="/edit-goal" method="post" class="d-inline">
+            <input type="hidden" name="goalId" value="{{this.id}}">
+            <input type="text" id="editContent-{{this.id}}" name="editContent" value="{{this.title}}" class="d-none">
+            <button type="submit" class="btn btn-success btn-sm d-none">Save</button>
+          </form>
+        <script>
+          function toggleEditForm(goalId) {
+          const editContentInput = document.getElementById(`editContent-${goalId}`);
+          const saveButton = document.querySelector(`#editForm-${goalId} [type="submit"]`);
+
+          editContentInput.classList.toggle('d-none');
+          saveButton.classList.toggle('d-none');
+          
+    }
+  </script>
+      {{/if}}
+
+      </div>
+    </div>
+    {{/each}}
+     </div>
+  </ul>
+{{else}}
+  <p>No goals available.</p>
+{{/if}}
