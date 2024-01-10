@@ -1,7 +1,7 @@
 CREATE TABLE `milestone` (
   `id` CHAR(36) NOT NULL DEFAULT UUID(),
   `title` CHAR(255) NOT NULL CHECK (CHAR_LENGTH(TRIM(`title`)) > 0),
-  `complete` BOOLEAN NOT NULL DEFAULT FALSE,
+  `accomplished` BOOLEAN NOT NULL DEFAULT FALSE,
   `goal_id` CHAR(36) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `goal_id_fk` (`goal_id`),
