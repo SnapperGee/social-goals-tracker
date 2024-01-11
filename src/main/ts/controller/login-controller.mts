@@ -28,7 +28,7 @@ export const signinUser = async (req: Request, res: Response): Promise<void> =>
     }
 };
 
-export const loginController = (req: Request, res: Response): void =>
+export const loginController = (_req: Request, res: Response): void =>
 {
     res.render("login", { title: "Blog" });
 };
