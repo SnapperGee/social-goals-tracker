@@ -24,7 +24,6 @@ export const signinUser = async (req: Request, res: Response): Promise<void> =>
     }
     catch (error)
     {
-        console.error(error);
         res.status(500).send("Server Error");
     }
 };
