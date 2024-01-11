@@ -6,43 +6,26 @@ export const signinUser = async (req: Request, res: Response): Promise<void> =>
 {
     const { name, password } = req.body;
 
-    const loginUser = async (name: string, password: string): Promise<boolean> =>
-    {
-        try
-        {
-            const existingUser = await prismaClient.user.findUnique({ where: { name } });
-
-            if ( ! existingUser || existingUser.password && await comparePasswordToHash(existingUser.password, password))
-            {
-                return false; // Authentication failed
-            }
-
-            return true; // Authentication successful
-        }
-        catch (error)
-        {
-            console.error(error);
-            throw new Error("Internal Server Error");
-        }
-    };
-
     try
     {
-        const isAuthenticated = await loginUser(name, password);
+        const existingUser = await prismaClient.user.findUnique({ where: { name } });
+
+        const isAuthenticated = existingUser && await comparePasswordToHash(password, existingUser.password);
 
         if ( ! isAuthenticated)
         {
             res.render("login", { errorMessage: "Invalid credentials.", bootstrapClass: "text-danger fw-bold" });
-            return;
         }
-
-        req.session.user = { name };
-        res.redirect("/homepage");
+        else
+        {
+            req.session.user = { name };
+            res.redirect("/homepage");
+        }
     }
     catch (error)
     {
         console.error(error);
-        res.status(500).send("Internal Server Error");
+        res.status(500).send("Server Error");
     }
 };
 
