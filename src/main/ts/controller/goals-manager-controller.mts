@@ -3,22 +3,29 @@ import type { Request, Response } from "express";
 
 export const getGoalsOfUserWithId = async (req: Request, res: Response): Promise<void> =>
 {
-    try
+    if (req.session.user)
     {
-        const { userId } = req.params;
-        const userData = await prismaClient.user.findUnique({
-            where: { id: userId },
-            include: {
-                goals: {
-                    include: { milestones: true }
+        try
+        {
+            const userId = req.session.user.id;
+            const userData = await prismaClient.user.findUnique({
+                where: { id: userId },
+                include: {
+                    goals: {
+                        include: { milestones: true }
+                    }
                 }
-            }
-        });
-        res.render("goals-manager", { userData });
+            });
+            res.render("goals-manager", { userData });
+        }
+        catch (error)
+        {
+            res.status(500).json(error);
+        }
     }
-    catch (error)
+    else
     {
-        res.status(500).json(error);
+        res.redirect("/homepage");
     }
 };
 
