@@ -4,10 +4,10 @@ import { prismaClient } from "../connection.mjs";
 
 export const signinUser = async (req: Request, res: Response): Promise<void> =>
 {
-    const { name, password } = req.body;
-
     try
     {
+        const { name, password } = req.body;
+
         const existingUser = await prismaClient.user.findUnique({ where: { name } });
 
         const isAuthenticated = existingUser && await comparePasswordToHash(password, existingUser.password);
