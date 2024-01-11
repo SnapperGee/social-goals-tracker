@@ -20,7 +20,7 @@ export const getGoalsOfUserWithId = async (req: Request, res: Response): Promise
         }
         catch (error)
         {
-            res.status(500).json(error);
+            res.status(500).json({message: "Server error"});
         }
     }
     else
