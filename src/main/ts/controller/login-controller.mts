@@ -8,9 +8,9 @@ export const signinUser = async (req: Request, res: Response): Promise<void> =>
     {
         const { name, password } = req.body;
 
-        const existingUser = await prismaClient.user.findUnique({ where: { name } });
+        const user = await prismaClient.user.findUnique({ where: { name } });
 
-        const isAuthenticated = existingUser && await comparePasswordToHash(password, existingUser.password);
+        const isAuthenticated = user && await comparePasswordToHash(password, user.password);
 
         if ( ! isAuthenticated)
         {
@@ -18,7 +18,7 @@ export const signinUser = async (req: Request, res: Response): Promise<void> =>
         }
         else
         {
-            req.session.user = { name };
+            req.session.user = { id: user.id, name: user.name };
             res.redirect("/homepage");
         }
     }
