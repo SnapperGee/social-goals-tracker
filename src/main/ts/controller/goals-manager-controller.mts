@@ -1,7 +1,7 @@
 import { prismaClient } from "../connection.mjs";
 import type { Request, Response } from "express";
 
-export const getGoalsOfUserWithId = async (req: Request, res: Response): Promise<void> =>
+export const getUserGoals = async (req: Request, res: Response): Promise<void> =>
 {
     if (req.session.user)
     {
@@ -29,13 +29,36 @@ export const getGoalsOfUserWithId = async (req: Request, res: Response): Promise
     }
 };
 
-export const putGoalsOfUserWithId = async (req: Request, res: Response): Promise<void> =>
+export const addGoal = async (req: Request, res: Response): Promise<void> =>
 {
-    console.log(`${req.params.userId}\n\n${req.body}`);
+    if (req.session.user)
+    {
+        try
+        {
+            const userId = req.session.user.id;
+            const newGoal = await prismaClient.goal.create({
+                data: {
+                    title: req.body.title,
+                    private: req.body.isPrivate,
+                    user: { connect: { id: userId } }
+                }
+            });
+
+            res.json(newGoal);
+        }
+        catch (error)
+        {
+            res.status(500).json({message: "Server error"});
+        }
+    }
+    else
+    {
+        res.json({message: "User not logged in"});
+    }
 };
 
 export const goalsManagerController = Object.freeze({
-    getGoalsOfUserWithId, putGoalsOfUserWithId
+    getUserGoals, addGoal
 });
 
 export default goalsManagerController;
