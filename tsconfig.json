@@ -6,7 +6,7 @@
       "declaration": false,
       "esModuleInterop": true,
       "forceConsistentCasingInFileNames": true,
-      "lib": ["es2022", "DOM"],
+      "lib": ["es2022", "DOM", "DOM.Iterable"],
       "module": "es2022",
       "moduleResolution": "node",
       "noEmitOnError": true,
