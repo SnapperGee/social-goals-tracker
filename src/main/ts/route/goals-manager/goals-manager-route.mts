@@ -4,6 +4,7 @@ import { Router } from "express";
 export const goalsManagerRouter = Router();
 
 goalsManagerRouter.get("/goalsmanager", goalsManagerController.getUserGoals);
+goalsManagerRouter.put("/goalsmanager/:goalId", goalsManagerController.addMilestone);
 goalsManagerRouter.put("/goalsmanager", goalsManagerController.addGoal);
 
 export default goalsManagerRouter;

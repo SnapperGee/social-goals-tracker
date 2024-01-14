@@ -31,6 +31,18 @@
         </div>
     </form>
 
+    {{!-- modal form for adding new milestone --}}
+    <form class="d-none position-fixed top-50 start-50 translate-middle p-3 border bg-light" id="newMilestoneForm" name="newMilestoneForm">
+        <div class="mb-3">
+            <label for="newMilestoneTitle" class="form-label">Title</label>
+            <input type="text" class="form-control" id="newMilestoneTitle" name="title" minlength="1"/>
+        </div>
+        <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-sm btn-danger shadow" id="newMilestoneFormCancelBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary shadow" id="addNewMilestoneBtn">Add Milestone</button>
+        </div>
+    </form>
+
     {{!-- root row --}}
     <div class="row">
 
