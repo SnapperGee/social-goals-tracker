@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { addDeleteGoalBtnHandler } from "./goals-manager/event-listener-callback/add-delete-goal-btn-handler.mjs";
-import { deleteMilestoneBtnClickHandler } from "./goals-manager/event-listener-callback/delete-milestone-btn-click-handler.mjs";
-import { milestonesToggleBtnClickHandler } from "./goals-manager/event-listener-callback/milestones-toggle-btn-click-handler.mjs";
-import { activateUpdateBtnOnChangeHandler } from "./goals-manager/event-listener-callback/activate-update-btn-on-change-handler.mjs";
-import { activateUpdateBtnOnCheckboxChangeHandler } from "./goals-manager/event-listener-callback/activate-update-btn-on-checkbox-change-handler.mjs";
+import { addDeleteGoalBtnHandler } from "./goals-manager/handlers/add-delete-goal-btn-handler.mjs";
+import { deleteMilestoneBtnClickHandler } from "./goals-manager/handlers/delete-milestone-btn-click-handler.mjs";
+import { milestonesToggleBtnClickHandler } from "./goals-manager/handlers/milestones-toggle-btn-click-handler.mjs";
+import { activateUpdateBtnOnChangeHandler } from "./goals-manager/handlers/activate-update-btn-on-change-handler.mjs";
+import { activateUpdateBtnOnCheckboxChangeHandler } from "./goals-manager/handlers/activate-update-btn-on-checkbox-change-handler.mjs";
 
 const addGoalBtn = document.getElementById("addGoalBtn") as HTMLButtonElement;
 const newGoalForm = document.getElementById("newGoalForm") as HTMLFormElement;
