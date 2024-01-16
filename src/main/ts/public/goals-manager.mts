@@ -127,7 +127,7 @@ newMilestoneForm.addEventListener("submit", async (event) =>
 for (let index = 0; index < milestonesToggleButtons.length; ++index)
 {
     const milestonesToggleBtn = milestonesToggleButtons[index];
-    milestonesToggleBtn.addEventListener("click", (event) => milestonesToggleBtnClickHandler(event, milestonesToggleButtons, milestonesDivs, addMilestoneBtn));
+    milestonesToggleBtn.addEventListener("click", milestonesToggleBtnClickHandler(milestonesToggleButtons, milestonesDivs, addMilestoneBtn));
 }
 
 for (let index = 0; index < titleInputs.length; ++index)
