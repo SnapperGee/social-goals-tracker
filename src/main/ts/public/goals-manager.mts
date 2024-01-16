@@ -27,8 +27,8 @@ addGoalBtn.addEventListener("click", () => newGoalForm.classList.remove("d-none"
 
 newGoalFormCancelBtn.addEventListener("click", () =>
 {
-    newGoalForm.reset();
     newGoalForm.classList.add("d-none");
+    newGoalForm.reset();
 });
 
 newGoalForm.addEventListener("submit", async (event) =>
@@ -90,9 +90,9 @@ addMilestoneBtn.addEventListener("click", () =>
 
 newMilestoneFormCancelBtn.addEventListener("click", () =>
 {
-    newMilestoneForm.reset();
-    newMilestoneForm.removeAttribute("data-goal-id");
     newMilestoneForm.classList.add("d-none");
+    newMilestoneForm.removeAttribute("data-goal-id");
+    newMilestoneForm.reset();
 });
 
 newMilestoneForm.addEventListener("submit", async (event) =>
