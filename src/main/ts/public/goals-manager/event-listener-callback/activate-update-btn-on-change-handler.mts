@@ -1,7 +1,7 @@
 import { titleInputValueIsChanged } from "../title-input-value-is-changed.mjs";
 import { checkboxValueIsChanged } from "../checkbox-value-is-changed.mjs";
 
-export const bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId = (
+export const activateUpdateBtnOnChangeHandler = (
     updateButtons: HTMLCollectionOf<HTMLButtonElement>,
     titleInputs: HTMLCollectionOf<HTMLInputElement>,
     accomplishedCheckboxes: HTMLCollectionOf<HTMLInputElement>,
@@ -98,4 +98,4 @@ export const bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId = (
     };
 };
 
-export default bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId;
+export default activateUpdateBtnOnChangeHandler;

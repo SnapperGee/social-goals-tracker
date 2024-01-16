@@ -2,7 +2,7 @@
 import { addDeleteGoalBtnHandler } from "./goals-manager/event-listener-callback/add-delete-goal-btn-handler.mjs";
 import { deleteMilestoneBtnClickHandler } from "./goals-manager/event-listener-callback/delete-milestone-btn-click-handler.mjs";
 import { milestonesToggleBtnClickHandler } from "./goals-manager/event-listener-callback/milestones-toggle-btn-click-handler.mjs";
-import { bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId } from "./goals-manager/event-listener-callback/bind-event-target-init-value-change-to-btn-active-status-via-goal-id.mjs";
+import { activateUpdateBtnOnChangeHandler } from "./goals-manager/event-listener-callback/activate-update-btn-on-change-handler.mjs";
 import { bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId } from "./goals-manager/event-listener-callback/bind-checkbox-event-target-init-value-change-to-btn-active-status-via-goal-id.mjs";
 
 const addGoalBtn = document.getElementById("addGoalBtn") as HTMLButtonElement;
@@ -133,8 +133,8 @@ for (let index = 0; index < milestonesToggleButtons.length; ++index)
 for (let index = 0; index < titleInputs.length; ++index)
 {
     const titleInput = titleInputs[index];
-    titleInput.addEventListener("keydown", bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId(updateGoalBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
-    titleInput.addEventListener("keyup", bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId(updateGoalBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
+    titleInput.addEventListener("keydown", activateUpdateBtnOnChangeHandler(updateGoalBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
+    titleInput.addEventListener("keyup", activateUpdateBtnOnChangeHandler(updateGoalBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
 }
 
 for (let index = 0; index < accomplishedCheckboxes.length; ++index)
