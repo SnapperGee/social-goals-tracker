@@ -50,12 +50,6 @@ app.use(express.static(resolvePath(SRC_ROOT, "js", "public")));
 
 app.use(router);
 
-app.get("/check-session", (req, res) =>
-{
-    console.log(req.session);
-    res.send("Session data logged in the server console.");
-});
-
 app.listen(PORT, () =>
 {
     console.log(`Server listening on port http://localhost:${PORT}`);
