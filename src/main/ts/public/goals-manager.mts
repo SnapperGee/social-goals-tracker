@@ -3,7 +3,7 @@ import { addDeleteGoalBtnHandler } from "./goals-manager/event-listener-callback
 import { deleteMilestoneBtnClickHandler } from "./goals-manager/event-listener-callback/delete-milestone-btn-click-handler.mjs";
 import { milestonesToggleBtnClickHandler } from "./goals-manager/event-listener-callback/milestones-toggle-btn-click-handler.mjs";
 import { activateUpdateBtnOnChangeHandler } from "./goals-manager/event-listener-callback/activate-update-btn-on-change-handler.mjs";
-import { bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId } from "./goals-manager/event-listener-callback/bind-checkbox-event-target-init-value-change-to-btn-active-status-via-goal-id.mjs";
+import { activateUpdateBtnOnCheckboxChangeHandler } from "./goals-manager/event-listener-callback/activate-update-btn-on-checkbox-change-handler.mjs";
 
 const addGoalBtn = document.getElementById("addGoalBtn") as HTMLButtonElement;
 const newGoalForm = document.getElementById("newGoalForm") as HTMLFormElement;
@@ -140,13 +140,13 @@ for (let index = 0; index < titleInputs.length; ++index)
 for (let index = 0; index < accomplishedCheckboxes.length; ++index)
 {
     const accomplishedCheckbox = accomplishedCheckboxes[index];
-    accomplishedCheckbox.addEventListener("change", () => bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId(accomplishedCheckbox, updateGoalBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
+    accomplishedCheckbox.addEventListener("change", activateUpdateBtnOnCheckboxChangeHandler(updateGoalBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
 }
 
 for (let index = 0; index < goalPrivacyCheckboxes.length; ++index)
 {
     const goalPrivacyCheckbox = goalPrivacyCheckboxes[index];
-    goalPrivacyCheckbox.addEventListener("change", () => bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId(goalPrivacyCheckbox, updateGoalBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
+    goalPrivacyCheckbox.addEventListener("change", activateUpdateBtnOnCheckboxChangeHandler(updateGoalBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
 }
 
 for (let index = 0; index < deleteGoalBtns.length; ++index)
