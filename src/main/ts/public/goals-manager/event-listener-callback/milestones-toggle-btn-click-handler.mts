@@ -3,10 +3,11 @@
  * milestones of a goal and the button to add milestones to a goal visible. Also
  * makes all milestones not associated with the goal invisible.
  *
- * @param event The event object of the milestones toggle button click event.
  * @param milestonesToggleBtns All milestone visibility toggle buttons.
  * @param milestonesDivs All milestone divs.
  * @param addMilestoneBtn Add milestone button.
+ *
+ * @returns The callback function for the milestones toggle button.
  */
 export const milestonesToggleBtnClickHandler = (
     milestonesToggleBtns: HTMLCollectionOf<HTMLButtonElement>,
