@@ -9,6 +9,6 @@ goalsManagerRouter.put("/goalsmanager/:goalId", goalsManagerController.addMilest
 goalsManagerRouter.put("/goalsmanager", goalsManagerController.addGoal);
 
 goalsManagerRouter.delete("/goalsmanager/:goalId", goalsManagerController.deleteGoal);
-goalsManagerRouter.delete("/goalsmanager/milestone/:milestoneId", goalsManagerController.deleteGoal);
+goalsManagerRouter.delete("/goalsmanager/milestone/:milestoneId", goalsManagerController.deleteMilestone);
 
 export default goalsManagerRouter;

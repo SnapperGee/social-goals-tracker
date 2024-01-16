@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { addDeleteGoalBtnHandler } from "./goals-manager/event-listener-callback/add-delete-goal-btn-handler.mjs";
+import { deleteMilestoneBtnClickHandler } from "./goals-manager/event-listener-callback/delete-milestone-btn-click-handler.mjs";
 import { milestonesToggleBtnClickHandler } from "./goals-manager/event-listener-callback/milestones-toggle-btn-click-handler.mjs";
 import { bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId } from "./goals-manager/event-listener-callback/bind-event-target-init-value-change-to-btn-active-status-via-goal-id.mjs";
 import { bindCheckboxEventTargetInitValueChangeToBtnActiveStatusViaGoalId } from "./goals-manager/event-listener-callback/bind-checkbox-event-target-init-value-change-to-btn-active-status-via-goal-id.mjs";
@@ -20,6 +21,7 @@ const goalPrivacyCheckboxes = document.getElementsByClassName("goalPrivacyToggle
 const milestonesDivs = document.getElementsByClassName("milestonesDiv") as HTMLCollectionOf<HTMLDivElement>;
 
 const deleteGoalBtns = document.getElementsByClassName("deleteGoalBtn") as HTMLCollectionOf<HTMLButtonElement>;
+const deleteMilestoneBtns = document.getElementsByClassName("deleteMilestoneBtn") as HTMLCollectionOf<HTMLButtonElement>;
 
 addGoalBtn.addEventListener("click", () => newGoalForm.classList.remove("d-none"));
 
@@ -151,4 +153,10 @@ for (let index = 0; index < deleteGoalBtns.length; ++index)
 {
     const deleteGoalBtn = deleteGoalBtns[index];
     addDeleteGoalBtnHandler(deleteGoalBtn, milestonesDivs);
+}
+
+for (let index = 0; index < deleteMilestoneBtns.length; ++index)
+{
+    const deleteMilestoneBtn = deleteMilestoneBtns[index];
+    deleteMilestoneBtn.addEventListener("click", deleteMilestoneBtnClickHandler(deleteMilestoneBtn));
 }

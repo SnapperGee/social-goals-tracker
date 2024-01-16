@@ -109,8 +109,30 @@ export const deleteGoal = async (req: Request, res: Response): Promise<void> =>
     }
 };
 
+export const deleteMilestone = async (req: Request, res: Response): Promise<void> =>
+{
+    if (req.session.user)
+    {
+        try
+        {
+            const { milestoneId } = req.params;
+            const deletedMilestone = await prismaClient.milestone.delete( { where: {id: milestoneId} } );
+            res.json(deletedMilestone);
+        }
+        catch (error)
+        {
+            console.error(`${JSON.stringify(req.body, null, 4)}\n`, error);
+            res.status(500).json({message: "Server error"});
+        }
+    }
+    else
+    {
+        res.json({message: "User not logged in"});
+    }
+};
+
 export const goalsManagerController = Object.freeze({
-    getUserGoals, addGoal, addMilestone, deleteGoal
+    getUserGoals, addGoal, addMilestone, deleteGoal, deleteMilestone
 });
 
 export default goalsManagerController;
