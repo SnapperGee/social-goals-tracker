@@ -133,8 +133,8 @@ for (let index = 0; index < milestonesToggleButtons.length; ++index)
 for (let index = 0; index < titleInputs.length; ++index)
 {
     const titleInput = titleInputs[index];
-    titleInput.addEventListener("keydown", (event) => bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId(event.target, updateGoalBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
-    titleInput.addEventListener("keyup", (event) => bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId(event.target, updateGoalBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
+    titleInput.addEventListener("keydown", bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId(updateGoalBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
+    titleInput.addEventListener("keyup", bindEventTargetInitValueChangeToBtnActiveStatusViaGoalId(updateGoalBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
 }
 
 for (let index = 0; index < accomplishedCheckboxes.length; ++index)
