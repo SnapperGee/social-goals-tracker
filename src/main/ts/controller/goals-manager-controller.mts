@@ -16,6 +16,7 @@ export const getUserGoals = async (req: Request, res: Response): Promise<void> =
                     }
                 }
             });
+
             res.render("goals-manager", { userData });
         }
         catch (error)
@@ -61,17 +62,14 @@ export const addMilestone = async (req: Request, res: Response): Promise<void> =
 {
     if (req.session.user)
     {
-        const { goalId } = req.params;
-
         try
         {
-
-            const goal = await prismaClient.goal.findUniqueOrThrow( { where: {id: goalId} } );
+            const { goalId } = req.params;
 
             const newMilestone = await prismaClient.milestone.create({
                 data: {
                     title: req.body.title,
-                    goal: { connect: { id: goal.id } }
+                    goal: { connect: { id: goalId } }
                 }
             });
 
@@ -89,8 +87,30 @@ export const addMilestone = async (req: Request, res: Response): Promise<void> =
     }
 };
 
+export const deleteGoal = async (req: Request, res: Response): Promise<void> =>
+{
+    if (req.session.user)
+    {
+        try
+        {
+            const { goalId } = req.params;
+            const deletedGoal = await prismaClient.goal.delete( { where: {id: goalId} } );
+            res.json(deletedGoal);
+        }
+        catch (error)
+        {
+            console.error(`${JSON.stringify(req.body, null, 4)}\n`, error);
+            res.status(500).json({message: "Server error"});
+        }
+    }
+    else
+    {
+        res.json({message: "User not logged in"});
+    }
+};
+
 export const goalsManagerController = Object.freeze({
-    getUserGoals, addGoal, addMilestone
+    getUserGoals, addGoal, addMilestone, deleteGoal
 });
 
 export default goalsManagerController;
