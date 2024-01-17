@@ -1,5 +1,4 @@
-import { titleInputValueIsChanged } from "../title-input-value-is-changed.mjs";
-import { checkboxValueIsChanged } from "./util.mjs";
+import { checkboxValueIsChanged, titleInputValueIsChanged } from "./util.mjs";
 
 export const activateUpdateBtnOnChangeHandler = (
     updateButtons: HTMLCollectionOf<HTMLButtonElement>,
