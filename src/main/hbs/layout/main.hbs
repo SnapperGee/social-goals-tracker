@@ -8,5 +8,8 @@
     {{{_sections.head}}}
 </head>
 <body>
+    {{#if session.user}}
+        {{> navbar}}
+    {{/if}}
     {{{ body }}}
 </body>
