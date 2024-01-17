@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { addUpdateGoalBtnHandler } from "./goals-manager/handlers/add-update-goal-btn-handler.mjs";
 import { addDeleteGoalBtnHandler } from "./goals-manager/handlers/add-delete-goal-btn-handler.mjs";
 import { deleteMilestoneBtnClickHandler } from "./goals-manager/handlers/delete-milestone-btn-click-handler.mjs";
 import { milestonesToggleBtnClickHandler } from "./goals-manager/handlers/milestones-toggle-btn-click-handler.mjs";
@@ -16,7 +15,7 @@ const newMilestoneFormCancelBtn = document.getElementById("newMilestoneFormCance
 
 const milestonesToggleButtons = document.getElementsByClassName("milestonesToggleBtn") as HTMLCollectionOf<HTMLButtonElement>;
 const updateGoalBtns = document.getElementsByClassName("updateGoalBtn") as HTMLCollectionOf<HTMLButtonElement>;
-const goalTitleInputs = document.getElementsByClassName("goalTitleInput") as HTMLCollectionOf<HTMLInputElement>;
+const titleInputs = document.getElementsByClassName("titleInput") as HTMLCollectionOf<HTMLInputElement>;
 const accomplishedCheckboxes = document.getElementsByClassName("accomplishedCheckbox") as HTMLCollectionOf<HTMLInputElement>;
 const goalPrivacyCheckboxes = document.getElementsByClassName("goalPrivacyToggle") as HTMLCollectionOf<HTMLInputElement>;
 const milestonesDivs = document.getElementsByClassName("milestonesDiv") as HTMLCollectionOf<HTMLDivElement>;
@@ -125,35 +124,29 @@ newMilestoneForm.addEventListener("submit", async (event) =>
     }
 });
 
-for (let index = 0; index < updateGoalBtns.length; ++index)
-{
-    const updateGoalBtn = updateGoalBtns[index];
-    addUpdateGoalBtnHandler(updateGoalBtn, goalTitleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes);
-}
-
 for (let index = 0; index < milestonesToggleButtons.length; ++index)
 {
     const milestonesToggleBtn = milestonesToggleButtons[index];
     milestonesToggleBtn.addEventListener("click", milestonesToggleBtnClickHandler(milestonesToggleButtons, milestonesDivs, addMilestoneBtn));
 }
 
-for (let index = 0; index < goalTitleInputs.length; ++index)
+for (let index = 0; index < titleInputs.length; ++index)
 {
-    const titleInput = goalTitleInputs[index];
-    titleInput.addEventListener("keydown", activateUpdateBtnOnChangeHandler(updateGoalBtns, goalTitleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
-    titleInput.addEventListener("keyup", activateUpdateBtnOnChangeHandler(updateGoalBtns, goalTitleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
+    const titleInput = titleInputs[index];
+    titleInput.addEventListener("keydown", activateUpdateBtnOnChangeHandler(updateGoalBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
+    titleInput.addEventListener("keyup", activateUpdateBtnOnChangeHandler(updateGoalBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
 }
 
 for (let index = 0; index < accomplishedCheckboxes.length; ++index)
 {
     const accomplishedCheckbox = accomplishedCheckboxes[index];
-    accomplishedCheckbox.addEventListener("change", activateUpdateBtnOnCheckboxChangeHandler(updateGoalBtns, goalTitleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
+    accomplishedCheckbox.addEventListener("change", activateUpdateBtnOnCheckboxChangeHandler(updateGoalBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
 }
 
 for (let index = 0; index < goalPrivacyCheckboxes.length; ++index)
 {
     const goalPrivacyCheckbox = goalPrivacyCheckboxes[index];
-    goalPrivacyCheckbox.addEventListener("change", activateUpdateBtnOnCheckboxChangeHandler(updateGoalBtns, goalTitleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
+    goalPrivacyCheckbox.addEventListener("change", activateUpdateBtnOnCheckboxChangeHandler(updateGoalBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
 }
 
 for (let index = 0; index < deleteGoalBtns.length; ++index)

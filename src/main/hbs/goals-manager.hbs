@@ -3,45 +3,46 @@
     <script src="/goals-manager.mjs" type="module"></script>
 {{/section}}
 
-{{!-- modal form for adding new goal --}}
-<form class="d-none position-fixed top-50 start-50 translate-middle p-3 border bg-light" id="newGoalForm" name="newGoalForm">
-    <div class="mb-3">
-        <div class="d-flex justify-content-between">
-            <label for="newGoalTitle" class="form-label">Title</label>
-            <div class="form-check form-switch">
-                <input class="form-check-input"
-                    id="newGoalPrivacy"
-                    name="isPrivate"
-                    value="true"
-                    type="checkbox"
-                    role="switch"
-                />
-                <label class="form-check-label" for="newGoalPrivacy">Private</label>
-            </div>
-        </div>
-        <input type="text" class="form-control" id="newGoalTitle" name="title" minlength="1"/>
-    </div>
-    <div class="d-flex justify-content-between">
-        <button type="button" class="btn btn-sm btn-danger shadow" id="newGoalFormCancelBtn">Cancel</button>
-        <button type="submit" class="btn btn-primary shadow" id="addNewGoalBtn">Add Goal</button>
-    </div>
-</form>
-
-{{!-- modal form for adding new milestone --}}
-<form class="d-none position-fixed top-50 start-50 translate-middle p-3 border bg-light" id="newMilestoneForm" name="newMilestoneForm">
-    <div class="mb-3">
-        <label for="newMilestoneTitle" class="form-label">Title</label>
-        <input type="text" class="form-control" id="newMilestoneTitle" name="title" minlength="1"/>
-    </div>
-    <div class="d-flex justify-content-between">
-        <button type="button" class="btn btn-sm btn-danger shadow" id="newMilestoneFormCancelBtn">Cancel</button>
-        <button type="submit" class="btn btn-primary shadow" id="addNewMilestoneBtn">Add Milestone</button>
-    </div>
-</form>
-
 <h1 class="text-center text-decoration-underline">Goals Manager</h1>
 
 <div class="container-fluid">
+
+    {{!-- modal form for adding new goal --}}
+    <form class="d-none position-fixed top-50 start-50 translate-middle p-3 border bg-light" id="newGoalForm" name="newGoalForm">
+        <div class="mb-3">
+            <div class="d-flex justify-content-between">
+                <label for="newGoalTitle" class="form-label">Title</label>
+                <div class="form-check form-switch">
+                    <input class="form-check-input"
+                        id="newGoalPrivacy"
+                        name="isPrivate"
+                        value="true"
+                        type="checkbox"
+                        role="switch"
+                    />
+                    <label class="form-check-label" for="newGoalPrivacy">Private</label>
+                </div>
+            </div>
+            <input type="text" class="form-control" id="newGoalTitle" name="title" minlength="1"/>
+        </div>
+        <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-sm btn-danger shadow" id="newGoalFormCancelBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary shadow" id="addNewGoalBtn">Add Goal</button>
+        </div>
+    </form>
+
+    {{!-- modal form for adding new milestone --}}
+    <form class="d-none position-fixed top-50 start-50 translate-middle p-3 border bg-light" id="newMilestoneForm" name="newMilestoneForm">
+        <div class="mb-3">
+            <label for="newMilestoneTitle" class="form-label">Title</label>
+            <input type="text" class="form-control" id="newMilestoneTitle" name="title" minlength="1"/>
+        </div>
+        <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-sm btn-danger shadow" id="newMilestoneFormCancelBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary shadow" id="addNewMilestoneBtn">Add Milestone</button>
+        </div>
+    </form>
+
     {{!-- root row --}}
     <div class="row">
 

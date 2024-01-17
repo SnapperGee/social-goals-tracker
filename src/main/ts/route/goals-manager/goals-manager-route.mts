@@ -8,9 +8,6 @@ goalsManagerRouter.get("/goalsmanager", goalsManagerController.getUserGoals);
 goalsManagerRouter.put("/goalsmanager/:goalId", goalsManagerController.addMilestone);
 goalsManagerRouter.put("/goalsmanager", goalsManagerController.addGoal);
 
-goalsManagerRouter.post("/goalsmanager/:goalId", goalsManagerController.updateGoal);
-goalsManagerRouter.post("/goalsmanager/milestone/:milestoneId");
-
 goalsManagerRouter.delete("/goalsmanager/:goalId", goalsManagerController.deleteGoal);
 goalsManagerRouter.delete("/goalsmanager/milestone/:milestoneId", goalsManagerController.deleteMilestone);
 
