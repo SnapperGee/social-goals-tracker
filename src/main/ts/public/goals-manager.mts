@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+import { updateMilestoneBtnClickHandler } from "./goals-manager/handlers/update-milestone-btn-click-handler.mjs";
 import { updateGoalBtnClickHandler } from "./goals-manager/handlers/update-goal-btn-click-handler.mjs";
 import { addDeleteGoalBtnHandler } from "./goals-manager/handlers/add-delete-goal-btn-handler.mjs";
 import { deleteMilestoneBtnClickHandler } from "./goals-manager/handlers/delete-milestone-btn-click-handler.mjs";
@@ -149,6 +150,16 @@ for (let index = 0; index < updateGoalBtns.length; ++index)
             {
                 throw new Error(`missing element(s): titleInput: ${titleInput}, accomplishedCheckbox: ${accomplishedCheckbox}, privateCheckbox: ${privateCheckbox}`);
             }
+        }
+    }
+
+    for (let index = 0; index < milestonesDivs.length; ++index)
+    {
+        const milestonesDiv = milestonesDivs[index];
+
+        if (updateBtn.dataset.goalId === milestonesDiv.dataset.goalId)
+        {
+            updateBtn.addEventListener("click", updateMilestoneBtnClickHandler(updateBtn, milestonesDiv));
         }
     }
 }

@@ -1,3 +1,4 @@
+import type { milestone } from "../../prisma/index";
 import { prismaClient } from "../connection.mjs";
 import type { Request, Response } from "express";
 
@@ -117,6 +118,27 @@ export const updateGoal = async (req: Request, res: Response): Promise<void> =>
     }
 };
 
+export const updateMilestones = async (req: Request, res: Response): Promise<void> =>
+{
+    const milestones = req.body;
+
+    try
+    {
+        const updatedMilestones = await prismaClient.$transaction(milestones.map(
+            ({id, title, accomplished}: Pick<milestone, "id" | "title" | "accomplished">) => prismaClient.milestone.update({
+                where: { id },
+                data: { title, accomplished }
+            }))
+        );
+
+        res.json(updatedMilestones);
+    }
+    catch (error)
+    {
+        res.status(500).json({message: "Server error"});
+    }
+};
+
 export const deleteGoal = async (req: Request, res: Response): Promise<void> =>
 {
     if (req.session.user)
@@ -162,7 +184,7 @@ export const deleteMilestone = async (req: Request, res: Response): Promise<void
 };
 
 export const goalsManagerController = Object.freeze({
-    getUserGoals, addGoal, addMilestone, updateGoal, deleteGoal, deleteMilestone
+    getUserGoals, addGoal, addMilestone, updateGoal, updateMilestones, deleteGoal, deleteMilestone
 });
 
 export default goalsManagerController;
