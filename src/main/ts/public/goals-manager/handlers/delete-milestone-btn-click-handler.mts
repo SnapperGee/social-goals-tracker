@@ -15,7 +15,7 @@ export const deleteMilestoneBtnClickHandler = (deleteMilestoneBtn: HTMLButtonEle
 
                 const resJson = await res.json();
 
-                if ( ! ("message" in resJson))
+                if (res.ok && ! ("message" in resJson))
                 {
                     deleteMilestoneBtn.parentElement?.parentElement?.remove();
                 }

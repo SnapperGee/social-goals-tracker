@@ -12,7 +12,7 @@ export const addDeleteGoalBtnHandler = (deleteGoalBtn: HTMLButtonElement, milest
 
             const resJson = await res.json();
 
-            if ( ! ("message" in resJson))
+            if (res.ok &&  ! ("message" in resJson))
             {
                 for (let index = 0; index < milestonesDivs.length; ++index)
                 {
