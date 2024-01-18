@@ -116,7 +116,7 @@ newMilestoneForm.addEventListener("submit", async (event) =>
 
         const resJson = await res.json();
 
-        if ( ! ("message"  in resJson))
+        if (res.ok && ! ("message"  in resJson))
         {
             window.location.reload();
         }
@@ -153,12 +153,14 @@ for (let index = 0; index < updateGoalBtns.length; ++index)
     }
 }
 
+// handlers for milestone visibility toggle buttons
 for (let index = 0; index < milestonesToggleButtons.length; ++index)
 {
     const milestonesToggleBtn = milestonesToggleButtons[index];
     milestonesToggleBtn.addEventListener("click", milestonesToggleBtnClickHandler(milestonesToggleButtons, milestonesDivs, addMilestoneBtn));
 }
 
+// handlers to make update buttons active/inactive when title input fields change
 for (let index = 0; index < titleInputs.length; ++index)
 {
     const titleInput = titleInputs[index];
@@ -166,24 +168,28 @@ for (let index = 0; index < titleInputs.length; ++index)
     titleInput.addEventListener("keyup", activateUpdateBtnOnChangeHandler(updateGoalBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
 }
 
+// handlers to make update buttons active/inactive when accomplished checkbox input fields change
 for (let index = 0; index < accomplishedCheckboxes.length; ++index)
 {
     const accomplishedCheckbox = accomplishedCheckboxes[index];
     accomplishedCheckbox.addEventListener("change", activateUpdateBtnOnCheckboxChangeHandler(updateGoalBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
 }
 
+// handlers to make update buttons active/inactive when private checkbox input fields change
 for (let index = 0; index < goalPrivacyCheckboxes.length; ++index)
 {
     const goalPrivacyCheckbox = goalPrivacyCheckboxes[index];
     goalPrivacyCheckbox.addEventListener("change", activateUpdateBtnOnCheckboxChangeHandler(updateGoalBtns, titleInputs, accomplishedCheckboxes, goalPrivacyCheckboxes));
 }
 
+// handlers for delete goal buttons
 for (let index = 0; index < deleteGoalBtns.length; ++index)
 {
     const deleteGoalBtn = deleteGoalBtns[index];
     addDeleteGoalBtnHandler(deleteGoalBtn, milestonesDivs);
 }
 
+// handlers for delete milestone buttons
 for (let index = 0; index < deleteMilestoneBtns.length; ++index)
 {
     const deleteMilestoneBtn = deleteMilestoneBtns[index];
