@@ -49,6 +49,23 @@ export const updateMilestoneBtnClickHandler = (
                 {
                     updateBtn.disabled = true;
                     updateBtn.classList.replace("btn-primary", "btn-secondary");
+
+                    for (const updatedMilestone of resJson)
+                    {
+                        const milestoneElement = milestoneElements.find(({ id }) => id === updatedMilestone.id);
+
+                        if (milestoneElement)
+                        {
+                            milestoneElement.titleInput.value = updatedMilestone.title;
+                            milestoneElement.titleInput.dataset.initValue = updatedMilestone.title;
+                            milestoneElement.accomplishedCheckbox.checked = updatedMilestone.accomplished;
+                            milestoneElement.accomplishedCheckbox.dataset.initValue = String(updatedMilestone.accomplished);
+                        }
+                        else
+                        {
+                            throw new Error(`${updateMilestoneBtnClickHandler.name}: missing milestone element: ${updatedMilestone}`);
+                        }
+                    }
                 }
             }
             catch (error)
