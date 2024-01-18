@@ -23,7 +23,7 @@ export const updateGoalBtnClickHandler = (
 
                 try
                 {
-                    const res = await fetch(`/goalsmanager/${goalId}`,
+                    const res = await fetch(`/goalsmanager/goal/${goalId}`,
                     {
                         method: "POST",
                         // eslint-disable-next-line @typescript-eslint/naming-convention
