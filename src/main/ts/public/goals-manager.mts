@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+import { updateGoalBtnClickHandler } from "./goals-manager/handlers/update-goal-btn-click-handler.mjs";
 import { addDeleteGoalBtnHandler } from "./goals-manager/handlers/add-delete-goal-btn-handler.mjs";
 import { deleteMilestoneBtnClickHandler } from "./goals-manager/handlers/delete-milestone-btn-click-handler.mjs";
 import { milestonesToggleBtnClickHandler } from "./goals-manager/handlers/milestones-toggle-btn-click-handler.mjs";
@@ -22,6 +23,8 @@ const milestonesDivs = document.getElementsByClassName("milestonesDiv") as HTMLC
 
 const deleteGoalBtns = document.getElementsByClassName("deleteGoalBtn") as HTMLCollectionOf<HTMLButtonElement>;
 const deleteMilestoneBtns = document.getElementsByClassName("deleteMilestoneBtn") as HTMLCollectionOf<HTMLButtonElement>;
+
+const goalDivs = document.getElementsByClassName("goalDiv") as HTMLCollectionOf<HTMLDivElement>;
 
 addGoalBtn.addEventListener("click", () => newGoalForm.classList.remove("d-none"));
 
@@ -123,6 +126,24 @@ newMilestoneForm.addEventListener("submit", async (event) =>
         console.error(error);
     }
 });
+
+for (let index = 0; index < updateGoalBtns.length; ++index)
+{
+    const updateGoalBtn = updateGoalBtns[index];
+
+    for (let index = 0; index < goalDivs.length; ++index)
+    {
+        const goalDiv = goalDivs[index];
+
+        if (updateGoalBtn.dataset.goalId === goalDiv.dataset.goalId)
+        {
+            const titleInput = goalDiv.querySelector<HTMLInputElement>(".titleInput");
+            const accomplishedCheckbox = goalDiv.querySelector<HTMLInputElement>(".accomplishedCheckbox");
+            const privateCheckbox = goalDiv.querySelector<HTMLInputElement>(".goalPrivacyToggle");
+            updateGoalBtn.addEventListener("click", updateGoalBtnClickHandler(titleInput!, accomplishedCheckbox!, privateCheckbox!));
+        }
+    }
+}
 
 for (let index = 0; index < milestonesToggleButtons.length; ++index)
 {

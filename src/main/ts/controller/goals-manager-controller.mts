@@ -54,7 +54,7 @@ export const addGoal = async (req: Request, res: Response): Promise<void> =>
     }
     else
     {
-        res.json({message: "User not logged in"});
+        res.status(403).json({message: "User not logged in"});
     }
 };
 
@@ -83,7 +83,37 @@ export const addMilestone = async (req: Request, res: Response): Promise<void> =
     }
     else
     {
-        res.json({message: "User not logged in"});
+        res.status(403).json({message: "User not logged in"});
+    }
+};
+
+export const updateGoal = async (req: Request, res: Response): Promise<void> =>
+{
+    if (req.session.user)
+    {
+        try
+        {
+            const userId = req.session.user.id;
+            const newGoal = await prismaClient.goal.update({
+                where: { id: req.params.goalId },
+                data: {
+                    title: req.body.title,
+                    private: req.body.private,
+                    accomplished: req.body.accomplished,
+                    user: { connect: { id: userId } }
+                }
+            });
+
+            res.json(newGoal);
+        }
+        catch (error)
+        {
+            res.status(500).json({message: "Server error"});
+        }
+    }
+    else
+    {
+        res.status(403).json({message: "User not logged in"});
     }
 };
 
@@ -105,7 +135,7 @@ export const deleteGoal = async (req: Request, res: Response): Promise<void> =>
     }
     else
     {
-        res.json({message: "User not logged in"});
+        res.status(403).json({message: "User not logged in"});
     }
 };
 
@@ -127,12 +157,12 @@ export const deleteMilestone = async (req: Request, res: Response): Promise<void
     }
     else
     {
-        res.json({message: "User not logged in"});
+        res.status(403).json({message: "User not logged in"});
     }
 };
 
 export const goalsManagerController = Object.freeze({
-    getUserGoals, addGoal, addMilestone, deleteGoal, deleteMilestone
+    getUserGoals, addGoal, addMilestone, updateGoal, deleteGoal, deleteMilestone
 });
 
 export default goalsManagerController;
