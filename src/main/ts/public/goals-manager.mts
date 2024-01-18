@@ -129,13 +129,13 @@ newMilestoneForm.addEventListener("submit", async (event) =>
 
 for (let index = 0; index < updateGoalBtns.length; ++index)
 {
-    const updateGoalBtn = updateGoalBtns[index];
+    const updateBtn = updateGoalBtns[index];
 
     for (let index = 0; index < goalDivs.length; ++index)
     {
         const goalDiv = goalDivs[index];
 
-        if (updateGoalBtn.dataset.goalId === goalDiv.dataset.goalId)
+        if (updateBtn.dataset.goalId === goalDiv.dataset.goalId)
         {
             const titleInput = goalDiv.querySelector<HTMLInputElement>(".titleInput");
             const accomplishedCheckbox = goalDiv.querySelector<HTMLInputElement>(".accomplishedCheckbox");
@@ -143,7 +143,7 @@ for (let index = 0; index < updateGoalBtns.length; ++index)
 
             if (titleInput && accomplishedCheckbox && privateCheckbox)
             {
-                updateGoalBtn.addEventListener("click", updateGoalBtnClickHandler(updateGoalBtn, titleInput, accomplishedCheckbox, privateCheckbox));
+                updateBtn.addEventListener("click", updateGoalBtnClickHandler(updateBtn, titleInput, accomplishedCheckbox, privateCheckbox));
             }
             else
             {
