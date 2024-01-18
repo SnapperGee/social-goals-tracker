@@ -140,7 +140,15 @@ for (let index = 0; index < updateGoalBtns.length; ++index)
             const titleInput = goalDiv.querySelector<HTMLInputElement>(".titleInput");
             const accomplishedCheckbox = goalDiv.querySelector<HTMLInputElement>(".accomplishedCheckbox");
             const privateCheckbox = goalDiv.querySelector<HTMLInputElement>(".goalPrivacyToggle");
-            updateGoalBtn.addEventListener("click", updateGoalBtnClickHandler(titleInput!, accomplishedCheckbox!, privateCheckbox!));
+
+            if (titleInput && accomplishedCheckbox && privateCheckbox)
+            {
+                updateGoalBtn.addEventListener("click", updateGoalBtnClickHandler(titleInput, accomplishedCheckbox, privateCheckbox));
+            }
+            else
+            {
+                throw new Error(`missing element(s): titleInput: ${titleInput}, accomplishedCheckbox: ${accomplishedCheckbox}, privateCheckbox: ${privateCheckbox}`);
+            }
         }
     }
 }
