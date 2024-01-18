@@ -2,15 +2,20 @@ import type { goal } from "../../../../prisma/index";
 
 export const updateGoalBtnClickHandler = (
     updateBtn: HTMLButtonElement,
-    goalDiv: HTMLDivElement
+    goalDiv: HTMLDivElement,
+    milestonesDiv: HTMLDivElement
 ): (event: MouseEvent) => Promise<void> =>
 {
     const titleInput = goalDiv.querySelector<HTMLInputElement>(".titleInput");
     const accomplishedCheckbox = goalDiv.querySelector<HTMLInputElement>(".accomplishedCheckbox");
     const privateCheckbox = goalDiv.querySelector<HTMLInputElement>(".goalPrivacyToggle");
 
-    if (titleInput && accomplishedCheckbox && privateCheckbox)
+    const milestonesDivPTitle = milestonesDiv.querySelector<HTMLParagraphElement>("p");
+    const milestonesDivPTitleSpan = milestonesDivPTitle?.querySelector<HTMLSpanElement>("span");
+
+    if (titleInput && accomplishedCheckbox && privateCheckbox && milestonesDivPTitle && milestonesDivPTitleSpan)
     {
+
         return async (event: MouseEvent): Promise<void> =>
         {
             if (event.currentTarget instanceof HTMLButtonElement)
@@ -47,6 +52,8 @@ export const updateGoalBtnClickHandler = (
                             accomplishedCheckbox.dataset.initValue = String(resJson.accomplished);
                             privateCheckbox.checked = resJson.private;
                             privateCheckbox.dataset.initValue = String(resJson.private);
+                            milestonesDivPTitle.textContent = resJson.title + "\u0020";
+                            milestonesDivPTitle.appendChild(milestonesDivPTitleSpan);
                         }
                     }
                     catch (error)

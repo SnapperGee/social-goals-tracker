@@ -138,7 +138,16 @@ for (let index = 0; index < updateGoalBtns.length; ++index)
 
         if (updateBtn.dataset.goalId === goalDiv.dataset.goalId)
         {
-            updateBtn.addEventListener("click", updateGoalBtnClickHandler(updateBtn, goalDiv));
+            for (let index = 0; index < milestonesDivs.length; ++index)
+            {
+                const milestonesDiv = milestonesDivs[index];
+
+                if (updateBtn.dataset.goalId === milestonesDiv.dataset.goalId)
+                {
+                    updateBtn.addEventListener("click", updateGoalBtnClickHandler(updateBtn, goalDiv, milestonesDiv));
+                }
+            }
+
         }
     }
 
