@@ -1,6 +1,7 @@
 import type { goal } from "../../../../prisma/index";
 
 export const updateGoalBtnClickHandler = (
+    updateBtn: HTMLButtonElement,
     titleInput: HTMLInputElement,
     accomplishedCheckbox: HTMLInputElement,
     isPrivateCheckbox: HTMLInputElement
@@ -20,8 +21,6 @@ export const updateGoalBtnClickHandler = (
                     private: isPrivateCheckbox.checked
                 };
 
-                console.log(`data:\n${JSON.stringify(data, null, 4)}\n\n\n`);
-
                 try
                 {
                     const res = await fetch(`/goalsmanager/${goalId}`,
@@ -34,10 +33,10 @@ export const updateGoalBtnClickHandler = (
 
                     const resJson = await res.json();
 
-                    console.log(`res:\n${JSON.stringify(resJson, null, 4)}\n\n\n`);
-
                     if (res.ok && ! ("message"  in resJson))
                     {
+                        updateBtn.disabled = true;
+                        updateBtn.classList.replace("btn-primary", "btn-secondary");
                         titleInput.value = resJson.title;
                         titleInput.dataset.initValue = resJson.title;
                         accomplishedCheckbox.checked = resJson.accomplished;

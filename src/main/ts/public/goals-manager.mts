@@ -143,7 +143,7 @@ for (let index = 0; index < updateGoalBtns.length; ++index)
 
             if (titleInput && accomplishedCheckbox && privateCheckbox)
             {
-                updateGoalBtn.addEventListener("click", updateGoalBtnClickHandler(titleInput, accomplishedCheckbox, privateCheckbox));
+                updateGoalBtn.addEventListener("click", updateGoalBtnClickHandler(updateGoalBtn, titleInput, accomplishedCheckbox, privateCheckbox));
             }
             else
             {
