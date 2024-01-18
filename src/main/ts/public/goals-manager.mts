@@ -138,18 +138,7 @@ for (let index = 0; index < updateGoalBtns.length; ++index)
 
         if (updateBtn.dataset.goalId === goalDiv.dataset.goalId)
         {
-            const titleInput = goalDiv.querySelector<HTMLInputElement>(".titleInput");
-            const accomplishedCheckbox = goalDiv.querySelector<HTMLInputElement>(".accomplishedCheckbox");
-            const privateCheckbox = goalDiv.querySelector<HTMLInputElement>(".goalPrivacyToggle");
-
-            if (titleInput && accomplishedCheckbox && privateCheckbox)
-            {
-                updateBtn.addEventListener("click", updateGoalBtnClickHandler(updateBtn, titleInput, accomplishedCheckbox, privateCheckbox));
-            }
-            else
-            {
-                throw new Error(`missing element(s): titleInput: ${titleInput}, accomplishedCheckbox: ${accomplishedCheckbox}, privateCheckbox: ${privateCheckbox}`);
-            }
+            updateBtn.addEventListener("click", updateGoalBtnClickHandler(updateBtn, goalDiv));
         }
     }
 
