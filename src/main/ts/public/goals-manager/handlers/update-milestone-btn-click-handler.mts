@@ -45,8 +45,6 @@ export const updateMilestoneBtnClickHandler = (
 
                 const resJson = await res.json();
 
-                console.log(JSON.stringify(resJson, null, 4));
-
                 if (res.ok && ! ("message"  in resJson))
                 {
                     updateBtn.disabled = true;
