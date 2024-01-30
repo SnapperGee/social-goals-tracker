@@ -47,7 +47,7 @@ THEN the current session is terminated, and I am taken back to the login screen
 
 ## Deployed Heroku Link
 
-[Social Goal Tracker](https://socialgoalstracker-58de32315ddf.herokuapp.com/)
+[Social Goal Tracker](https://social-goals-tracker-73d7fdc5c8eb.herokuapp.com/)
 
 ## Technologies Used
 
